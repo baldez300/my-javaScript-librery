@@ -1,0 +1,58 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mapquest example</title>
+        <style>
+            html{
+                background-color: cadetblue;
+            }
+            #map {
+                width: 600px;
+                height: 600px;
+            }
+        </style>
+        <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+        <script>
+            // 1. The basic part of the example
+            var L;
+
+            window.onload = function() {
+                L.mapquest.key = 'T3WyfFAZiL7kJcKfh3fG6ZZgp0SqzIO2';
+
+                // 'map' refers to a <div> element with the ID map
+                var map = L.mapquest.map('map', {
+                    center: [60.162059, 24.945831],
+                    layers: L.mapquest.tileLayer('satellite'), //'map, hybrid, satellite, dark, light'
+                    zoom: 13
+                });
+
+                // You can expand the controls available using the "map.addControl()" method.
+                // There are other types of control available, for example "L.mapquest.searchControl() and L.mapquest.satelliteControl()"
+                // You can adjust the position by specifying an options object as a parameter for the control containing a position property.
+                map.addControl(L.mapquest.control({position : 'bottomright'}));
+
+                // Adding a marker (icon) at a certain point on the map is easy — you just use the L.marker() method.
+                L.marker([60.172059, 24.941631], {
+                    icon: L.mapquest.icons.marker({
+                        primaryColor: '#22407F',
+                        secondaryColor: '#3B5998',
+                        shadow: true,
+                        size: 'md',
+                        symbol: 'P'
+                    })
+                })
+                .bindPopup('This is Helsinki')
+                .addTo(map);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Simple Mapquest example</h1>
+
+        <div id="map"></div>
+    </body>
+</html>

@@ -1,0 +1,253 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>This is the third example that explain how to build custom form widgets.</title>
+        <style>
+            body {
+                background-color: slategray;
+            }
+
+            .widget select,
+            .no-widget .select {
+              position : absolute;
+              left     : -5000em;
+              height   : 0;
+              overflow : hidden;
+            }
+            
+            /* --------------- */
+            /* Required Styles */
+            /* --------------- */
+            
+            .select {
+              position: relative;
+              display : inline-block;
+            }
+            
+            .select.active,
+            .select:focus {
+              box-shadow: 0 0 3px 1px #227755;
+              outline: none;
+            }
+            
+            .select .optList {
+              position: absolute;
+              top     : 100%;
+              left    : 0;
+            }
+            
+            .select .optList.hidden {
+              max-height: 0;
+              visibility: hidden;
+            }
+            
+            /* ------------ */
+            /* Fancy Styles */
+            /* ------------ */
+            
+            .select {
+              font-size   : 0.625em; /* 10px */
+              font-family : Verdana, Arial, sans-serif;
+            
+              -moz-box-sizing : border-box;
+              box-sizing : border-box;
+            
+              padding : 0.1em 2.5em 0.2em 0.5em; /* 1px 25px 2px 5px */
+              width   : 10em; /* 100px */
+            
+              border        : 0.2em solid #000; /* 2px */
+              border-radius : 0.4em; /* 4px */
+            
+              box-shadow : 0 0.1em 0.2em rgba(0,0,0,.45); /* 0 1px 2px */
+            
+              background : #F0F0F0;
+              background : -webkit-linear-gradient(90deg, #E3E3E3, #fcfcfc 50%, #f0f0f0);
+              background : linear-gradient(0deg, #E3E3E3, #fcfcfc 50%, #f0f0f0);
+            }
+            
+            .select .value {
+              display  : inline-block;
+              width    : 100%;
+              overflow : hidden;
+            
+              white-space   : nowrap;
+              text-overflow : ellipsis;
+              vertical-align: top;
+            }
+            
+            .select:after {
+              content : "▼";
+              position: absolute;
+              z-index : 1;
+              height  : 100%;
+              width   : 2em; /* 20px */
+              top     : 0;
+              right   : 0;
+            
+              padding-top : .1em;
+            
+              -moz-box-sizing : border-box;
+              box-sizing : border-box;
+            
+              text-align : center;
+            
+              border-left  : .2em solid #000;
+              border-radius: 0 .1em .1em 0;
+            
+              background-color : #000;
+              color : #FFF;
+            }
+            
+            .select .optList {
+              z-index : 2;
+            
+              list-style: none;
+              margin : 0;
+              padding: 0;
+            
+              background: #f0f0f0;
+              border: .2em solid #000;
+              border-top-width : .1em;
+              border-radius: 0 0 .4em .4em;
+            
+              box-shadow: 0 .2em .4em rgba(0,0,0,.4);
+            
+              -moz-box-sizing : border-box;
+              box-sizing : border-box;
+            
+              min-width : 100%;
+              max-height: 10em; /* 100px */
+              overflow-y: auto;
+              overflow-x: hidden;
+            }
+            
+            .select [role="option"] {
+              padding: .2em .3em;
+            }
+            
+            .select .highlight {
+              background: #000;
+              color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <form class="no-widget">
+            <select name="myFruit" tabindex="-1">
+                <option>Cherry</option>
+                <option>Lemon</option>
+                <option>Banana</option>
+                <option>Strawberry</option>
+                <option>Apple</option>
+            </select>
+        
+            <!-- We add the role="listbox" attribute to our top element -->
+            <div class="select" role="listbox">
+                <span class="value">Cherry</span>
+                <!-- We also add the role="presentation" to the ul element -->
+                <ul class="optList" role="presentation">
+                    <!-- And we add the role="option" attribute to all the li elements -->
+                    <li role="option" class="option">Cherry</li>
+                    <li role="option" class="option">Lemon</li>
+                    <li role="option" class="option">Banana</li>
+                    <li role="option" class="option">Strawberry</li>
+                    <li role="option" class="option">Apple</li>
+                </ul>
+            </div>  
+        </form>
+    </body>
+
+    <script>
+        // This function updates the displayed value and synchronizes it with the native control.
+        // It takes two parameters:
+        // select : the DOM node with the class `select` containing the value to update
+        // index  : the index of the value to be selected
+        function updateValue(select, index) {
+          // We need to get the native control for the given custom control
+          // In our example, that native control is a sibling of the custom control
+          let nativeWidget = select.previousElementSibling;
+        
+          // We also need to get the value placeholder of our custom control
+          let value = select.querySelector('.value');
+        
+          // And we need the whole list of options
+          let optionList = select.querySelectorAll('[role="option"]');
+
+          // We make sure that all the options are not selected
+            optionList.forEach(function (other) {
+                other.setAttribute('aria-selected', 'false');
+            });
+
+            // We make sure the chosen option is selected
+            optionList[index].setAttribute('aria-selected', 'true');
+        
+          // We set the selected index to the index of our choice
+          nativeWidget.selectedIndex = index;
+        
+          // We update the value placeholder accordingly
+          value.innerHTML = optionList[index].innerHTML;
+        
+          // And we highlight the corresponding option of our custom control
+          highlightOption(select, optionList[index]);
+        };
+        
+        // This function returns the current selected index in the native control
+        // It takes one parameter:
+        // select : the DOM node with the class `select` related to the native control
+        function getIndex(select) {
+          // We need to access the native control for the given custom control
+          // In our example, that native control is a sibling of the custom control
+          let nativeWidget = select.previousElementSibling;
+        
+          return nativeWidget.selectedIndex;
+        };
+
+        // === With these two functions above, we can bind the native controls to the custom ones:
+
+        // We handle event binding when the document is loaded.
+        window.addEventListener('load', function () {
+        let selectList = document.querySelectorAll('.select');
+
+            // Each custom control needs to be initialized
+            selectList.forEach(function (select) {
+                let optionList = select.querySelectorAll('.option'),
+                    selectedIndex = getIndex(select);
+
+                // We make our custom control focusable
+                select.tabIndex = 0;
+                // tabIndex property. 
+                // Using this property is necessary to ensure that the native control will never gain focus, 
+                // and to make sure that our custom control gains focus when the user uses their keyboard or mouse.
+
+                // We make the native control no longer focusable
+                select.previousElementSibling.tabIndex = -1;
+
+                // We make sure that the default selected value is correctly displayed
+                updateValue(select, selectedIndex);
+
+                // Each time a user clicks on an option, we update the value accordingly
+                optionList.forEach(function (option, index) {
+                    option.addEventListener('click', function (event) {
+                        updateValue(select, index);
+                    });
+                });
+
+                // Each time a user uses their keyboard on a focused control, we update the value accordingly
+                select.addEventListener('keyup', function (event) {
+                    let length = optionList.length,
+                    index  = getIndex(select);
+
+                    // When the user hits the down arrow, we jump to the next option
+                    if (event.keyCode === 40 && index < length - 1) { index++; }
+
+                    // When the user hits the up arrow, we jump to the previous option
+                    if (event.keyCode === 38 && index > 0) { index--; }
+
+                    updateValue(select, index);
+                });
+            });
+        });
+        </script>
+</html>

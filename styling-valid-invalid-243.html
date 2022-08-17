@@ -1,0 +1,171 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>:required and :optional with generated content</title>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+        <style>
+            html {
+                background-color: rgb(125, 131, 112);
+            }
+
+            body {
+                font-family: 'Josefin Sans', sans-serif;
+                margin: 20px auto;
+                max-width: 460px;
+            }
+
+            fieldset {
+                padding: 10px 30px 0;
+            }
+
+            legend {
+                color: white;
+                background: black;
+                padding: 5px 10px;
+            }
+
+            fieldset > div {
+                margin-bottom: 20px;
+                display: flex;
+                flex-flow: row wrap;
+            }
+
+            button, label, input {
+                display: block;
+                font-family: inherit;
+                font-size: 100%;
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 5px;
+                height: 30px;
+            }
+
+            input {
+                box-shadow: inset 1px 1px 3px #ccc;
+                border-radius: 5px;
+            }
+
+            input:hover, input:focus {
+                background-color: #eee;
+            }
+
+            input + span {
+                position: relative;
+            }
+
+            input:required + span::after {
+                font-size: 0.7rem;
+                position: absolute;
+                content: "required";
+                color: brown;
+                background-color: black;
+                padding: 5px 10px;
+                top: -26px;
+                left: -70px;
+            }
+
+            button {
+                width: 60%;
+                margin: 0 auto;
+            }
+
+            /* To provide these indicators "x" & "✓", we use the following CSS: */
+            input + span {
+                position: relative;
+            }
+
+            input + span::before {
+                position: absolute;
+                right: -20px;
+                top: 5px;
+            }
+
+            input:invalid {
+                border: 2px solid red;
+            }
+
+            input:invalid + span::before {
+                content: '✖';
+                color: red;
+            }
+
+            input:valid + span::before {
+                content: '✓';
+                color: green;
+            }
+
+            /* The :out-of-range CSS pseudo-class represents an <input> element whose current 
+            value is outside the range limits specified by the min and max attributes. */
+            li {
+                list-style: none;
+                margin-bottom: 1em;
+            }
+
+            input {
+                border: 1px solid black;
+            }
+
+            input:in-range {
+                background-color: rgba(0, 255, 0, 0.25);
+            }
+
+            input:out-of-range {
+                background-color: rgba(255, 0, 0, 0.25);
+                border: 2px solid red;
+            }
+
+            input:in-range + label::after {
+                content: 'okay.';
+            }
+
+            input:out-of-range + label::after {
+                content: 'out of range!';
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <fieldset>
+                <legend>Feedback form</legend>
+
+                <p>Required fields are labelled with "required".</p>
+                <div>
+                    <label for="fname">First name *: </label>
+                    <input id="fname" name="fname" type="text" required>
+                    <span></span>
+                </div>
+                <div>
+                    <label for="lname">Last name: </label>
+                    <input id="lname" name="lname" type="text" required>
+                    <span></span>
+                </div>
+                <div>
+                    <label for="email">Email address (include if you want a response): </label>
+                    <input id="email" name="email" type="email">
+                    <span></span>
+                </div>
+                <div><button>Submit</button></div>
+            </fieldset>
+        </form>
+
+        <br>
+        <br>
+        <br>
+
+        <form action="" id="form1">
+            <p>Values between 1 and 10 are valid: The :out-of-range CSS pseudo-class </p>
+            <ul>
+                <li>
+                    <input id="value1" name="value1" type="number" placeholder="1 to 10" min="1" max="10" value="12">
+                    <label for="value1">Your value is </label>
+                </li>
+            </ul>
+        </form>
+    </body>
+
+</html>

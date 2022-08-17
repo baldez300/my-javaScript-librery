@@ -1,0 +1,49 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>:read-only demo — confirmation form</title>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+        <style>
+            html {
+                background-color: rgb(125, 131, 112);
+            }
+
+            input:indeterminate + label {
+                background: lime;
+            }
+        </style>
+    </head>
+
+    <body>
+        <fieldset>
+            <legend>Checkbox</legend>
+            <div>
+                <input type="checkbox" id="checkbox">
+                <label for="checkbox">This checkbox label starts out lime.</label>
+            </div>
+        </fieldset>
+            
+        <fieldset>
+            <legend>Radio</legend>
+            <div>
+                <input type="radio" id="radio1" name="radioButton">
+                <label for="radio1">First radio label starts out lime.</label>
+            </div>
+            <div>
+                <input type="radio" id="radio2" name="radioButton">
+                <label for="radio2">Second radio label also starts out lime.</label>
+            </div>
+        </fieldset>
+    </body>
+
+    <script>
+        const inputs = document.getElementsByTagName("input");
+
+        for (let i = 0; i < inputs.length; i++) {
+            inputs[i].indeterminate = true;
+        }
+    </script>
+
+</html>

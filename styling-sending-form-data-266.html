@@ -1,0 +1,51 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Form validation: Task 3</title>
+        <style>
+            body {
+                background-color: slategray;
+                color: #333;
+                font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+                padding: 1em;
+                margin: 0;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            /* To check if valid or not*/
+            /* input:invalid {
+                border: 2px dashed red;
+            }
+
+            input:valid {
+                border: 2px dashed green;
+            } */
+        </style>
+    </head>
+
+    <body>
+        <form action="http://www.foo.com" method="POST">
+            <div>
+                <label for="say">What greeting do you want to say?</label>
+                <input name="say" id="say" value="Hi">
+            </div>
+            <div>
+                <label for="to">Who do you want to say it to?</label>
+                <input name="to" id="to" value="Mom">
+            </div>
+            <div>
+                <button>Send my greetings</button>
+            </div>
+        </form>          
+    </body>
+    <script>
+
+
+    </script>
+
+</html>

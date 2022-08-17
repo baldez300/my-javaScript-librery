@@ -1,0 +1,56 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Full built-in validation example</title>
+        <style>
+            body {
+                background-color: rgb(120, 128, 126);
+            }
+
+            form {
+                font: 1em sans-serif;
+                max-width: 250px;
+            }
+
+            input[type="text"] {
+                width : 100%;
+                border: 1px solid #333;
+                margin: 1em;
+                margin-left: 0%;
+                box-sizing: border-box;
+            }
+
+            input:invalid {
+                box-shadow: 0 0 5px 1px red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <label for="name">Enter username (upper and lowercase letters only): </label>
+            <input type="text" name="name" id="name" required pattern="[A-Za-z]+">
+            <button>Submit</button>
+        </form>
+    </body>
+
+    <script>
+        const nameInput = document.querySelector('input');
+
+        nameInput.addEventListener('input', () => {
+            nameInput.setCustomValidity('');
+            nameInput.checkValidity();
+        });
+
+        nameInput.addEventListener('invalid', () => {
+            if(nameInput.value === '') {
+                nameInput.setCustomValidity('Enter your username!');
+            } else {
+                nameInput.setCustomValidity('Usernames can only contain upper and lowercase letters. Try again!');
+            }
+        });
+    </script>
+
+</html>

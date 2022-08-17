@@ -1,0 +1,43 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Full built-in validation example</title>
+        <style>
+            body {
+                background-color: rgb(120, 128, 126);
+            }
+
+            input:invalid {
+                border: 4px dashed red;
+            }
+
+            input:valid {
+                border: 4px solid green;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <label for="mail">I would like you to provide me with an e-mail address:</label>
+            <input type="email" id="mail" name="mail">
+            <button>Submit</button>
+        </form>          
+    </body>
+
+    <script>
+        const email = document.getElementById("mail");
+
+        email.addEventListener("input", function (event) {
+            if (email.validity.typeMismatch) {
+                email.setCustomValidity("I am expecting an e-mail address!");
+                email.reportValidity();
+            } else {
+                email.setCustomValidity("");
+            }
+        });
+    </script>
+
+</html>

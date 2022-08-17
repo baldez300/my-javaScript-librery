@@ -1,0 +1,42 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Favorite fruit start</title>
+        <style>
+            body {
+                background-color: rgb(120, 128, 126);
+            }
+
+            input:invalid {
+                border: 2px dashed red;
+            }
+
+            input:invalid:required {
+                background-image: linear-gradient(to right, green,aqua);
+            }
+
+            input:valid {
+                border: 2px solid black;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <label for="choose">Would you prefer a banana or a cherry? (required)</label>
+            <input id="choose" name="i_like" required pattern="[Bb]anana|[Cc]herry|[Aa]a|[Aa]bc|[ab?c]c|[ab*c]bbc" minlength="6" maxlength="6">
+
+            <label>Constraining the length of your entries</label>
+            <input type="password" minlength="4" maxlength="4"/>
+
+            <label for="number">Constraining the values of your entries</label>
+            <input type="number" id="number" name="amount" value="2" min="2" max="10" step="2">
+
+            <button>Submit</button>
+        </form>
+    </body>
+
+</html>

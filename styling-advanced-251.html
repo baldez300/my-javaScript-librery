@@ -1,0 +1,87 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Advanced styling: Task 1</title>
+        <style>
+            body {
+                background-color: rgb(125, 131, 112);
+                color: #333;
+                font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+                padding: 1em;
+                margin: 0;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            button,
+            input,
+            select {
+                font-family: inherit;
+                font-size: 100%;
+                padding: 0; margin: 0;
+            }
+
+            /* The native styling. */
+            /* input {
+                box-sizing: border-box;
+                width: 150px;
+                height: 30px;
+                border: solid #5B6DCD 2px;
+                padding: 5px;
+            } */
+
+            form input {
+                -webkit-appearance: none;
+                appearance: none;
+                position: none;
+            }
+
+            /* “remove outline on safari and in some browsers too when focus” */
+            input:focus { 
+                outline: none !important;
+            }
+            textarea:focus { 
+                outline: none !important;
+            }
+
+            /*  So, the best way to order your pseudo-class styles are :hover then :focus then :active . */
+            input:hover {
+                background-color: green;
+            }
+
+            input:focus {
+                background-color: blue;
+            }
+
+            input:active {
+                background-color: red;
+            }
+
+            /* Another thing that commonly denotes a search box is a magnifying glass icon. */
+            /* .appearence {
+                position: relative;
+            } */
+            .select-wrapper::before {
+                content: '🔍';
+                font-size: 1rem;
+                top: 19px;
+                left: 175px;
+                position: absolute;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <div class="appearence">
+                <input type="search" name="search" id="search" aria-label="Search our site" placeholder="What are you looking">
+                <div class="select-wrapper"></div>
+            </div>
+        </form>
+    </body>
+
+</html>

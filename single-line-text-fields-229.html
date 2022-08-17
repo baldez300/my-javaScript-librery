@@ -1,0 +1,98 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Single line text field examples</title>
+        <style>
+            html {
+                background-color: lightslategray;
+            }
+            
+            label {
+                display: block;
+                font: 1rem 'Fira Sans', sans-serif;
+            }
+
+            input,
+            label {
+                margin: .4rem 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <p>
+                <label for="comment">Add a comment here:</label>
+                Here is a basic single line text field example the one below:
+                <input type="text" id="comment" name="comment" value="I'm a text field">
+            </p>
+            <p>
+                <label for="email">Enter your email address:</label>
+                <input type="email" id="email" name="email" multiple>
+            </p>
+            <p>
+                <label for="pwd">Enter your password:</label>
+                <input type="password" id="pwd" name="pwd">
+            </p>
+            <p>
+                <label for="pwd">Enter your 2nd password:</label>
+                <input type="hidden" id="timestamp" name="timestamp" value="1286705410">
+            </p>
+            <p>
+                <label for="search">Search:</label>
+                <input type="search" id="search" name="search">
+            </p>
+            <p>
+                <label for="tel">Enter your number:</label>
+                <input type="tel" id="tel" name="tel">
+            </p>
+            <p>
+                <label for="url">Web address:</label>
+                <input type="url" id="url" name="url">
+            </p>
+            <p>
+                <label for="site-search">Search the site:</label>
+                <input type="search" id="site-search" name="q">
+
+                <button>Search</button>
+            </p>
+            <p>
+                <label for="url">Enter an https:// URL:</label>
+
+                <input type="url" name="url" id="url"
+                    placeholder="https://example.com"
+                    pattern="https://.*" size="30"
+                    required
+                >
+            </p>
+            <p>
+                <label for="phone">Enter your phone number:</label>
+
+                <input type="tel" id="phone" name="phone"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    required>
+
+                <small>Format: 123-456-7890</small>
+            </p>
+
+            <p>Choose your monster's features:</p>
+            <div>
+                <input type="checkbox" id="scales" name="scales" checked>
+                <label for="scales">Scales</label>
+            </div>
+
+            <div>
+                <input type="checkbox" id="horns" name="horns" unchecked>
+                <label for="horns">Horns</label>
+            </div>
+            
+            <p>
+                <button type="submit">Submit me!</button>
+            </p>
+        </form>
+    </body>
+
+</html>

@@ -1,0 +1,53 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Full built-in validation example</title>
+        <style>
+            body {
+                background-color: rgb(120, 128, 126);
+            }
+
+            input[type="text"] {
+                width : 100%;
+                border: 1px solid #333;
+                margin: 1em;
+                margin-left: 0%;
+                box-sizing: border-box;
+            }
+
+            input:invalid {
+                box-shadow: 0 0 5px 1px red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form action="#">
+            <div>
+                <label>
+                    Enter an integer between 1 and 10:
+                    <input type="number" min="1" max="10" required>
+                </label>
+            </div>
+            <div><input type="submit" value="submit"></div>
+        </form>
+        <hr>
+        Invalid values:
+        <ul id="log"></ul>
+    </body>
+
+    <script>
+        const input = document.querySelector('input')
+        const log = document.getElementById('log')
+
+        input.addEventListener('invalid', (e) => {
+            log.appendChild(Object.assign(
+                document.createElement('li'),
+                { textContent: JSON.stringify(e.target.value) }
+            ))
+        })
+    </script>
+
+</html>

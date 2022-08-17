@@ -1,0 +1,44 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ugly controls basic styling</title>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+        <style>
+            html {
+                background-color: rgb(125, 131, 112);
+            }
+
+            input:required {
+                border: 1px solid black;
+            }
+
+            input:optional {
+                border: 1px solid silver;
+            }
+            </style>
+    </head>
+
+    <body>
+        <form>
+            <fieldset>
+              <legend>Feedback form</legend>
+                <div>
+                    <label for="fname">First name: </label>
+                    <input id="fname" name="fname" type="text" required>
+                </div>
+                <div>
+                    <label for="lname">Last name: </label>
+                    <input id="lname" name="lname" type="text" required>
+                </div>
+                <div>
+                    <label for="email">Email address (include if you want a response): </label>
+                    <input id="email" name="email" type="email">
+                </div>
+                <div><button>Submit</button></div>
+            </fieldset>
+          </form>          
+    </body>
+
+</html>

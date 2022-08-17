@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Strings: Task 2</title>
+        <style>
+        p, h1, h2 {
+            color: purple;
+            margin: 0.5em 0;
+        }
+        html {
+            font-family: monospace;
+            background-color: #ddd0b8;
+            }
+
+        * {
+            box-sizing: border-box;
+        }
+        </style>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+
+        <section class="preview">
+
+
+
+        </section>
+
+    </body>
+    <script>
+        let quote = 'I do not like green eggs and ham. I do not like them, Sam-I-Am.';
+        let substring = 'green eggs and ham';
+
+        let quoteLength = quote.length;
+        // The first possibility
+        let index = quote.indexOf(substring);
+        let revisedQuote = quote.slice(0, index + substring.length + 1);
+
+        let revisedQuote2 = quote.slice(0, index + 19);
+
+        // The second possibility
+        // let index = 33;
+        // let revisedQuote = quote.slice(0, index);
+
+        // Add your code here
+
+        // Don't edit the code below here!
+
+        const section = document.querySelector('section');
+
+        section.innerHTML = ' ';
+        let para1 = document.createElement('h1');
+        para1.textContent = `The quote is ${ quoteLength } characters long.`;
+        let para2 = document.createElement('h2');
+        para2.textContent = revisedQuote;
+
+        let para3 = document.createElement('p');
+        para3.textContent = revisedQuote2;
+
+        section.appendChild(para1);
+        section.appendChild(para2);
+
+        section.appendChild(para3)
+    </script>
+
+</html>

@@ -1,0 +1,82 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Detailed custom validation</title>
+        <style>
+            body {
+                background-color: rgb(120, 128, 126);
+                font: 1em sans-serif;
+                width: 200px;
+                padding: 0;
+                margin : 0 auto;
+            }
+
+            .warning {
+                border: 2px solid #f39389;
+                border-radius: 2px;
+                padding: 10px;
+                position: absolute;
+                background-color: #fbd8d4;
+                color: #3b3c40;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Stopping keystrokes from reaching an edit field -->
+       <div class="container">
+            <p>Please enter your name using lowercase letters only.</p>
+            
+            <form>
+                <input type="text" id="my-textbox">
+                <button>Submit</button>
+            </form>
+        </div>
+
+        <script>
+            // And here's the JavaScript code that does the job. First, listen for keypress events:
+            const myTextbox = document.getElementById('my-textbox');
+            myTextbox.addEventListener('keypress', checkName, false);
+
+            // The checkName() function, which looks at the pressed key and decides whether to allow it:
+            function checkName(evt) {
+            const charCode = evt.charCode;
+                if (charCode !== 0) {
+                    if (charCode < 97 || charCode > 122) {
+                        evt.preventDefault();
+                        displayWarning(
+                            "Please use lowercase letters only."
+                            + "\n" + "charCode: " + charCode + "\n"
+                        );
+                    }
+                }
+            }
+
+            // The displayWarning() function presents a notification of a problem. 
+            // It's not an elegant function but does the job for the purposes of this example:
+            let warningTimeout;
+            const warningBox = document.createElement("div");
+            warningBox.className = "warning";
+
+            function displayWarning(msg) {
+                warningBox.innerHTML = msg;
+
+                if (document.body.contains(warningBox)) {
+                    window.clearTimeout(warningTimeout);
+                } else {
+                    // insert warningBox after myTextbox
+                    myTextbox.parentNode.insertBefore(warningBox, myTextbox.nextSibling);
+                }
+
+                warningTimeout = window.setTimeout(function() {
+                    warningBox.parentNode.removeChild(warningBox);
+                    warningTimeout = -1;
+                }, 2000);
+            }
+        </script>
+    </body>
+
+</html>

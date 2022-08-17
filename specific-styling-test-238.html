@@ -1,0 +1,115 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Styling basics: Task 1</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                background-color: darkslategray;
+                color: #999;
+                font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
+                padding: 1em;
+                margin: 0;
+                width: 500px;
+            }
+
+            /* Add some kind of lightweight "reset" to make fonts, padding, margin, and sizing more consistent to begin with. */
+            *,
+            *::before,
+            *::after {
+                font: inherit;
+                font-size: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* On top of that, add in some nice, consistent styling for the inputs and button. */
+            button,input {
+                height: 25px;
+                margin:0 0 .5em;
+            }
+            button:hover,
+            button:focus {
+                outline     : none;
+                background  : peru;
+                color       : #BBB;
+            }
+
+            /* Use some kind of layout technique to make the inputs and labels line up neatly. */
+            label,input {
+                height: 25px;
+                margin:0 0 .5em;
+            }
+            label {
+                margin-right: .5em;
+                display: inline-block;
+                width: 110px;
+                text-align: right;
+            }
+
+            /* The <progress> HTML element displays an indicator showing the completion progress of a task, typically displayed as a progress bar. */
+            /* The <meter> HTML element represents either a scalar value within a known range or a fractional value. */
+            #file, #fuel {
+                padding-right: 10px;
+                font-size: 1rem;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <h2>Edit your preferences</h2>
+            <ul>
+                <li>
+                    <label for="e-mail">Email:</label>
+                    <input type="email" id="e-mail" name="e-mail">
+                </li>
+                <li>
+                    <label for="website">Website:</label>
+                    <input type="url" id="website" name="website">
+                </li>
+                <li>
+                    <label for="phone">Phone number:</label>
+                    <input type="tel" id="phone" name="phone">
+                </li>
+                <li>
+                    <label for="food">Favorite food:</label>
+                    <select name="food" id="food">
+                        <option>Salad</option>
+                        <option>Curry</option>
+                        <option>Pizza</option>
+                        <option>Fajitas</option>
+                    </select>
+                </li>
+                <li>
+                    <button>Update preferences</button>
+                </li>
+            </ul>
+
+            <h4>"progress>: The Progress Indicator element</h4>
+            <p>
+                <label for="file">File progress:</label>
+                <progress id="file" max="100" value="70"> 70% </progress>70%
+            </p>
+            
+            <h4>"meter>: The HTML Meter element</h4>
+            <p>
+                <label for="fuel">Fuel level:</label>
+                <meter id="fuel"
+                    min="0" max="100"
+                    low="33" high="66" optimum="80"
+                    value="50">
+                    at 50/100
+                </meter> at 50/100
+            </p>
+
+        </form>
+    </body>
+
+</html>
