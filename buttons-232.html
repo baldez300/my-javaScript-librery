@@ -1,0 +1,114 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Button examples</title>
+        <style>
+            html {
+                background-color: lightslategray;
+            }
+
+            label {
+                display: block;
+                font: 1rem 'Fira Sans', sans-serif;
+            }
+
+            input,
+            label {
+                margin: .4rem 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <p>
+                <button type="submit">
+                    This a <br><strong>submit button</strong>
+                </button>
+            </p>
+            <p>
+                <input type="submit" value="This is a submit button">
+            </p>
+            <p>
+                <button type="reset">
+                    This a <br><strong>reset button</strong>
+                </button>
+            </p>
+            <p>
+                <input type="reset" value="This is a reset button">
+            </p>
+            <p>
+                <button type="button">
+                    This an <br><strong>anonymous button</strong>
+                </button>
+            </p>
+            <p>
+                <input type="button" value="This is an anonymous button">
+            </p>
+
+            <p>
+                <h3>Image button below</h3>
+                <input type="image" alt="Click me please!" src="images/igm1.png" width="180" height="130">
+            </p>
+
+            <p>
+                <h4>Let the user choose one or more files from their device storage.</h4>
+                <h4>Allow the file picker to accept JPG and PNG images only.</h4>
+                <label for="avatar">Choose a profile picture:</label>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+            </p>
+
+            <p>
+                <label for="avatar">The user is allowed to select multiple files in this case:</label>
+                <input type="file" name="file" id="file" accept="image/*" multiple>
+
+            </p>
+
+            <p>
+                <label for="avatar">The file picker can access photos, videos, and audio captured directly by the device's camera and microphone:</label>
+
+                <input type="file" accept="image/*;capture=camera">
+                <input type="file" accept="video/*;capture=camcorder">
+                <input type="file" accept="audio/*;capture=microphone">
+
+            </p>
+
+            <!-- This code here is for here below -->
+            <p>
+                <label for="price">Choose a maximum house price in (€): (Slider controls, Contrôles du curseur)</label>
+                <input type="range" name="price" id="price" min="50000" max="500000" step="100" value="250000">
+                <output class="price-output" for="price"></output>
+            </p>
+
+            <p>
+                <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+                    <label>The form provides a slider whose value can range between 0 and 100, and an "input" element into which you can enter a second number. The two numbers are added together.</label>
+                    <input type="range" id="b" name="b" value="50" /> +
+                    <input type="number" id="a" name="a" value="10" /> =
+                    <output name="result" for="a b">60</output>
+                </form>
+            </p>
+
+            <p>
+                <label for="q">Hello Bal autofocus on the input field after page load</label>
+                <input name="q" autofocus>
+            </p>
+        </form>
+    </body>
+
+    <!-- This code here is for here above -->
+    <script>
+        const price = document.querySelector('#price');
+        const output = document.querySelector('.price-output');
+        
+        output.textContent = price.value + ' €';
+        
+        price.addEventListener('input', function() {
+          output.textContent = price.value + ' €';
+        });
+    </script>
+
+</html>

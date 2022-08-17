@@ -1,0 +1,47 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas</title>
+        <!-- <script src="script.js" defer></script>
+        <link href="style.css" rel="stylesheet"> -->
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas class="myCanvas">
+            <p>Add suitable fallback here</p>
+        </canvas>
+    </body>
+    <script>
+        // Canvases with no explicit width and height default to 300 pixels wide by 150 pixels high.
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+
+        // To draw onto the canvas we need to get a special reference to the drawing area called a context.
+        const ctx = canvas.getContext('2d'); 
+
+        // We'll color the canvas background black.
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        // Text is drawn using two methods:
+        // fillText() — draws filled text.
+        // strokeText() — draws outline (stroke) text.
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 1;
+        ctx.font = '36px arial';
+        ctx.strokeText('Canvas text', 50, 50);
+
+        ctx.fillStyle = 'red';
+        ctx.font = '48px arial';
+        ctx.fillText('Canvas text', 50, 150);
+    </script>
+</html>

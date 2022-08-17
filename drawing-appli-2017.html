@@ -1,0 +1,108 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas</title>
+        <!-- <script src="script.js" defer></script>
+        <link href="style.css" rel="stylesheet"> -->
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+                background: #ccc;
+            }
+            .toolbar {
+                width: 150px;
+                height: 75px;
+                background: #ccc;
+                padding: 5px;
+                margin-bottom: 1rem;
+            }
+            input[type="color"], button {
+                width: 90%;
+                margin: 0 auto;
+                display: block;
+            }
+            input[type="range"] {
+                width: 70%;
+            }
+            span {
+                position: relative;
+                bottom: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="toolbar">
+            <input type="color" aria-label="select pen color" value="#ff0000">
+            <input type="range" min="1" max="50" value="30" aria-label="select pen size"><span class="output">30</span>
+            <button>Clear canvas</button>
+        </div>
+
+        <canvas class="myCanvas">
+            <p>Add suitable fallback here</p>
+        </canvas>
+    </body>
+    <script>
+        // Canvases with no explicit width and height default to 300 pixels wide by 150 pixels high.
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+
+        // To draw onto the canvas we need to get a special reference to the drawing area called a context.
+        const ctx = canvas.getContext('2d'); 
+
+        // We'll color the canvas background black.
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        // The list variales
+        const colorPicker = document.querySelector('input[type="color"]');
+        const sizePicker = document.querySelector('input[type="range"]');
+        const output = document.querySelector('.output');
+        const clearBtn = document.querySelector('button');
+
+        // Covert degrees to radians.
+        function degToRad(degrees) {
+            return degrees * Math.PI / 180;
+        }
+
+        // Update sizepicker output value
+        sizePicker.addEventListener('input', () => output.textContent = sizePicker.value);
+
+        // Store mouse pointer coordinates, and wheter the button is pressed.
+        let curX;
+        let curY;
+        let pressed = false;
+
+        // Update mouse pointer coordinates.
+        document.addEventListener('mousemove', e => {
+            curX = (window.Event) ? e.pageX : e.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
+            curY = (window.Event) ? e.pageY : e.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+        });
+
+        canvas.addEventListener('mousedown', () => pressed = true);
+        canvas.addEventListener('mouseup', () => pressed = false);
+
+        clearBtn.addEventListener('click', () => {
+            ctx.fillStyle = 'rgb(0, 0, 0)';
+            ctx.fillRect(0, 0, width, height);
+        });
+
+        function draw() {
+            if (pressed) {
+                ctx.fillStyle = colorPicker.value;
+                ctx.beginPath();
+                ctx.arc(curX, curY-85, sizePicker.value, degToRad(0), degToRad(360), false);
+                ctx.fill();
+            }
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+
+    </script>
+</html>

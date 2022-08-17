@@ -1,0 +1,83 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Three.js basic cube example</title>
+
+        <!-- <script src="three.min.js" defer></script> -->
+        <!-- <script src="script.js" defer></script>
+        <link href="style.css" rel="stylesheet"> -->
+
+        <style>
+            html,body {
+                margin: 0;
+            }
+
+            body {
+                overflow: hidden;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script src="node_modules/three/build/three.min.js"></script>
+        <script>
+            // Let's start by creating a new scene,  which represents the whole 3D world we are trying to display.
+            const scene = new THREE.Scene();
+
+            // Next, we need a camera so we can see the scene. In 3D imagery terms, the camera represents a viewer's position in the world. 
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            // The third vital ingredient is a renderer. This is an object that renders a given scene, as viewed through a given camera.
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+
+            // Next, we want to create the cube we'll display on the canvas.
+            // We create a "cube" global variable so we can access our cube from anywhere in the code.
+            let cube;
+
+            const loader = new THREE.TextureLoader();
+
+            loader.load('images/coffee.jpg', texture => {
+                texture.wrapS = THREE.RepeatWrapping;
+                texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(3, 2);
+
+                const geometry = new THREE.BoxGeometry(2.4, 2.4, 2.4);
+                const material = new THREE.MeshLambertMaterial( {
+                    map: texture,
+                    shading: THREE.FlatShading
+                } );
+
+                cube = new THREE.Mesh(geometry, material);
+                scene.add(cube);
+
+                draw();
+            });
+
+            // We'll add a couple of lights to the scene, to liven things up a bit.
+            const light = new THREE.AmbientLight('rgb(255, 255, 255)');
+            // soft white light
+            scene.add(light);
+
+            const spotLight = new THREE.SpotLight('rgb(255, 255, 255)');
+            spotLight.position.set(100, 1000, 1000);
+            spotLight.castShadow = true;
+            scene.add(spotLight);
+
+            function draw() {
+                cube.rotation.x += 0.01;
+                cube.rotation.y += 0.01;
+                renderer.render(scene, camera);
+
+                //requestAnimationFrame(draw);
+            }
+        </script>
+    </body>
+</html>

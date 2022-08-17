@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Event listener & handler example</title>
+        <style>
+        </style>
+    </head>
+    <body>
+
+        <!-- // Event handler HTML attributes OR
+            Inline event handlers — don't use these:
+        <button onclick="bgChange()">Change color</button> -->
+
+        <button>Change color</button>
+        <p>Hello world, Balde is coming soon to improve the planet earth's technology.!</p>
+
+        <script>
+            const btn = document.querySelector('button');
+
+            function random(number) {
+                return Math.floor(Math.random() * (number+1));
+            }
+
+            // btn.onclick = function() {
+            //     const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            //     document.body.style.backgroundColor = rndCol;
+            // }
+
+            // ##==== Above uses 'anonymous func' below 'func declaration'
+
+            // function bgChange() {
+            //     const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            //     document.body.style.backgroundColor = rndCol;
+            // }
+            // btn.onclick = bgChange;
+
+            // ##===== Above uses 'func declaration' below 'func expression'
+
+            // const bal = function bgChange() {
+            //     const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            //     document.body.style.backgroundColor = rndCol;
+            // }
+            // btn.onclick = bal;
+
+            // ##===== Above uses 'func expression' below 'arrow func'
+
+            // const bal = () => {
+            //     const rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+            //     document.body.style.backgroundColor = rndCol;
+            // }
+            // btn.ondblclick = bal;
+
+            const controller = new AbortController(); // Event handlers can also be removed by passing an AbortSignal.
+
+            // ##= Note: It is perfectly appropriate to put all the code inside the addEventListener() function.
+            btn.addEventListener('click', function() {
+                var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+                document.body.style.backgroundColor = rndCol;
+            }, { signal: controller.signal });
+
+            controller.abort(); // removes any/all event handlers associated with this controller
+
+            // A function which removes a previously added event handler.
+            // btn.removeEventListener('click', bgChange);
+
+        </script>   
+    </body>
+</html>

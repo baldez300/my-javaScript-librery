@@ -1,0 +1,95 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Simple setInterval clock</title>
+        <style>
+            p {
+                font-family: sans-serif;
+                background-color: blueviolet;
+                color: chartreuse;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="clock"></p>
+
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+        <button class="reset">Reset</button>
+          
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+            
+            // The code outputs an alert containing "Hello", then an alert containing "World" as soon as you click OK on the first alert.
+            (function() {
+                let lastTime = 0;
+                let vendors = ['ms', 'moz', 'webkit', 'o'];
+                for(let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                    window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+                    window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+                                            || window[vendors[x]+'CancelRequestAnimationFrame'];
+                }
+            
+                if (!window.requestAnimationFrame)
+                    window.requestAnimationFrame = function(callback, element) {
+                        let currTime = new Date().getTime();
+                        let timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                        let id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                        timeToCall);
+                        lastTime = currTime + timeToCall;
+                        return id;
+                    };
+            
+                if (!window.cancelAnimationFrame)
+                    window.cancelAnimationFrame = function(id) {
+                        clearTimeout(id);
+                    };
+            }());
+
+            // if I want to set a frame rate.
+            let fps = 15;
+            function draw() {
+                setTimeout(function() {
+                    requestAnimationFrame(draw);
+                    // Drawing code goes here
+                }, 1000 / fps);
+            }
+
+            // ====================================///////////////
+            // How does requestAnimationFrame() differ from setInterval() and setTimeout()?
+            // You don't specify a time interval for requestAnimationFrame().
+            function draw() {
+            // Drawing code goes here
+                requestAnimationFrame(draw);
+            }
+            draw();
+
+            // Let's now see how to do the same thing as the code above using setInterval():
+            function draw() {
+            // Drawing code goes here
+            }
+            setInterval(draw, 17);
+
+            // ====================================///////////////
+            // Including a timestamp
+            // The function can be given a parameter, too: a timestamp value, that represents the time since the requestAnimationFrame() started running.
+            let startTime = null;
+
+            function draw(timestamp) {
+                if (!startTime) {
+                startTime = timestamp;
+                }
+
+                currentTime = timestamp - startTime;
+
+                // Do something based on current time
+
+                requestAnimationFrame(draw);
+            }
+            draw();
+
+        </script>
+    </body>
+</html>

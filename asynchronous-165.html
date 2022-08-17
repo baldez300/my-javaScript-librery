@@ -1,0 +1,87 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <!-- This is for the jquery API call. -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <meta charset="utf-8">
+        <title>Simple setInterval clock</title>
+        <style>
+            #ball {
+                background: red;
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+                position: relative;
+                left: 50%;
+                margin-left: -25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="ball"></div>
+        
+        
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+
+            // requestAnimationFrame polyfill by Erik Möller
+            // USAGED JAVA SCRIPT AND jQUERY====================//||\\
+
+            (function() {
+                let lastTime = 0;
+                let vendors = ['ms', 'moz', 'webkit', 'o'];
+                for(let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                    window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+                    window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
+                                            || window[vendors[x]+'CancelRequestAnimationFrame'];
+                }
+            
+                if (!window.requestAnimationFrame)
+                    window.requestAnimationFrame = function(callback, element) {
+                        let currTime = new Date().getTime();
+                        let timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                        let id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+                        timeToCall);
+                        lastTime = currTime + timeToCall;
+                        return id;
+                    };
+            
+                if (!window.cancelAnimationFrame)
+                    window.cancelAnimationFrame = function(id) {
+                        clearTimeout(id);
+                    };
+            }());
+
+            // Properties _____________________________________________
+
+            let ball = $('#ball');
+            let xMin = 0;
+            let xMax = $(window).height() - ball.height();
+            let pos = 0;
+            let dir = 1;
+            let speed = 8;
+            let fps = 60;
+            let interval = 1000 / fps;
+
+
+            // Animation Logic ________________________________________
+
+            function draw() {
+                setTimeout(function() {
+                    window.requestAnimationFrame(draw);
+                    
+                    pos = ball.position().top;
+                    if (pos > xMax || pos < xMin) {
+                        dir *= -1;
+                    }
+                    
+                    pos += (dir * speed);
+                    ball.css('top', pos + 'px');
+                }, interval);
+            }
+
+             // draw();
+        </script>
+    </body>
+</html>

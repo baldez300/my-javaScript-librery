@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Ajax starting point</title>
+
+        <style>
+        html, pre {
+            font-family: sans-serif;
+        }
+
+        body {
+            width: 500px;
+            margin: 0 auto;
+            background-color: #ccc;
+        }
+
+        pre {
+            line-height: 1.5;
+            letter-spacing: 0.05rem;
+            padding: 1rem;
+            background-color: white;
+        }
+
+        label {
+            width: 200px;
+            margin-right: 33px;
+        }
+
+        select {
+            width: 350px;
+            padding: 5px;
+        }
+        pre, option {
+            background-color: darkolivegreen;
+        }
+
+        </style>
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <h1>Ajax starting point</h1>
+
+        <form>
+        <label for="verse-choose">Choose a verse</label>
+        <select id="verse-choose" name="verse-choose">
+            <option>Verse 1</option>
+            <option>Verse 2</option>
+            <option>Verse 3</option>
+            <option>Verse 4</option>
+        </select>
+        </form>
+
+        <h2>The Conqueror Worm, <em>Edgar Allen Poe, 1843</em></h2>
+
+        <pre>
+
+        </pre>
+
+        <script>
+            // This stores a reference to the <select> and <pre> elements in constants 
+            // and defines an onchange event handler function so that when the select's value is changed, 
+            // its value is passed to an invoked function updateDisplay() as a parameter.
+            const verseChoose = document.querySelector('select');
+            const poemDisplay = document.querySelector('pre');
+
+            verseChoose.onchange = function() {
+                const verse = verseChoose.value;
+                updateDisplay(verse);
+            };
+
+            // Let's define our updateDisplay() function.
+            function updateDisplay(verse){
+                // To convert "Verse 1" to "verse1.txt" we need to convert the V to lower case, remove the space, and add .txt on the end.
+                verse = verse.replace(" ", "");
+                verse = verse.toLowerCase();
+                let url = verse + '.txt';
+
+                // Create a new request object using the XMLHttpRequest() constructor.
+                let request = new XMLHttpRequest();
+
+                // Next, you need to use the open() method to specify what HTTP request method to use to request the resource from the network, and what its URL is.
+                request.open('GET', url);
+
+                // Next, we'll set the type of response we are expecting — which is defined by the request's responseType property — as text.
+                request.responseType = 'text';
+
+                // Fetching a resource from the network is an asynchronous operation, meaning that you have to wait for that operation to complete.
+                request.onload = function() {
+                    poemDisplay.textContent = request.response;
+                };
+
+                // The above is all set up for the XHR request — it won't actually run until we tell it to, which is done using the send() method.
+                request.send();
+            }
+
+            // It won't show any of the poem when it first loads.
+            // To fix this, add the following two lines.
+            // To load verse 1 by default, and make sure the <select> element always shows the correct value:
+            updateDisplay('Verse 1');
+            verseChoose.value = 'Verse 1'; 
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Simple setInterval clock</title>
+        <style>
+            p {
+                font-family: sans-serif;
+                background-color: blueviolet;
+                color: chartreuse;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="clock"></p>
+
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+        <button class="reset">Reset</button>
+          
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+            
+            // The code outputs an alert containing "Hello", then an alert containing "World" as soon as you click OK on the first alert.
+            setTimeout(function() {
+                alert('World');
+            }, 0);
+
+            alert('Hello');
+
+        </script>
+    </body>
+</html>

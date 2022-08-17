@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Drop down content examples</title>
+        <style>
+            html {
+                background-color: lightslategray;
+            }
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <p>
+                <label for="simple">A simple select box:</label>
+                <select id="simple" name="simple">
+                    <option>Banana</option>
+                    <option>Cherry</option>
+                    <option>Lemon</option>
+                </select>
+            </p>
+            <p>
+                <label for="groups">Select box with option groups:</label>
+                <select id="groups" name="groups">
+                    <optgroup label="fruits">
+                        <option>Banana</option>
+                        <option selected>Cherry</option>
+                        <option>Lemon</option>
+                    </optgroup>
+                    <optgroup label="vegetables">
+                        <option>Carrot</option>
+                        <option>Eggplant</option>
+                        <option>Potato</option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>
+                <label for="multi">Select box allowing multiple selections:</label>
+                <select multiple size="3" id="multi" name="multi">
+                    <option>Banana</option>
+                    <option>Cherry</option>
+                    <option>Lemon</option>
+                </select>
+            </p>
+            <p>
+                <label for="myFruit">What's your favorite fruit?</label>
+                <input type="text" name="myFruit" id="myFruit" list="mySuggestion">
+                <datalist id="mySuggestion">
+                    <option>Apple</option>
+                    <option>Banana</option>
+                    <option>Blackberry</option>
+                    <option>Blueberry</option>
+                    <option>Lemon</option>
+                    <option>Lychee</option>
+                    <option>Peach</option>
+                    <option>Pear</option>
+                </datalist>
+            </p>
+            <p>
+                <label for="myFruit">What is your favorite fruit? (With fallback)</label>
+                <input type="text" id="myFruit" name="fruit" list="fruitList">
+                <datalist id="fruitList">   <label for="suggestion">or pick a fruit</label>
+                    <select id="suggestion" name="altFruit">
+                        <option>Apple</option>
+                        <option>Banana</option>
+                        <option>Blackberry</option>
+                        <option>Blueberry</option>
+                        <option>Lemon</option>
+                        <option>Lychee</option>
+                        <option>Peach</option>
+                        <option>Pear</option>
+                    </select>
+                </datalist>
+            </p>
+            <p>
+                <h3>Using the value attribute in the down below options</h3>
+                <select id="simple" name="simple">
+                    <option value="banana">Big, beautiful yellow banana</option>
+                    <option value="cherry">Succulent, juicy cherry</option>
+                    <option value="lemon">Sharp, powerful lemon</option>
+                </select>                  
+            </p>
+
+            <p>
+                <h3>A RANGE CONTROL WITH HASH MARKS</h3>
+                <input type="range" list="tickmarks">
+                <datalist id="tickmarks">
+                    <option value="0"></option>
+                    <option value="10"></option>
+                    <option value="20"></option>
+                    <option value="30"></option>
+                    <option value="40"></option>
+                    <option value="50"></option>
+                    <option value="60"></option>
+                    <option value="70"></option>
+                    <option value="80"></option>
+                    <option value="90"></option>
+                    <option value="100"></option>
+                </datalist>
+            </p>
+
+            <p>
+                <h3>A RANGE CONTROL WITH HASH MARKS AND LABELS</h3>
+                <input type="range" list="tickmarks">
+                <datalist id="tickmarks">
+                    <option value="0" label="0%"></option>
+                    <option value="10"></option>
+                    <option value="20"></option>
+                    <option value="30"></option>
+                    <option value="40"></option>
+                    <option value="50" label="50%"></option>
+                    <option value="60"></option>
+                    <option value="70"></option>
+                    <option value="80"></option>
+                    <option value="90"></option>
+                    <option value="100" label="100%"></option>
+                </datalist>
+            </p>
+            
+            <p>
+                <button type="submit">Submit me!</button>
+            </p>
+        </form>
+    </body>
+
+</html>

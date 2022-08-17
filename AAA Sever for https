@@ -1,0 +1,9 @@
+﻿This process is to get you connected to your "Python Local Server"
+
+1) cd Desktop 
+
+2) cd JavaScript-examples
+
+3) python3 -m http.server
+
+4) In the browser: http://[::]:8000/

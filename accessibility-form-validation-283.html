@@ -1,0 +1,128 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Form validation example</title>
+        <style>
+            html {
+                font-family: sans-serif;
+                background-color: gray;
+            }
+
+            form {
+                background: #eee;
+                border-radius: 20px;
+                box-shadow: 1px 1px 1px black;
+                padding: 20px;
+                width: 300px;
+            }
+
+            label {
+                width: 130px;
+                float: left;
+                text-align: right;
+                padding: 4px;
+                margin-bottom: 20px;
+            }
+
+            input {
+                width: 130px;
+                float: right;
+            }
+
+            label, input {
+                font-size: 1em;
+                line-height: 1.5;
+            }
+
+            div {
+                clear: both;
+            }
+
+            .errors {
+                background: yellow;
+                border-radius: 20px;
+                box-shadow: 1px 1px 1px black;
+                padding: 20px;
+                width: 300px;
+                position: absolute;
+                left: 360px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Form validation example</h1>
+        <div class="errors" role="alert" aria-relevant="all">
+            <ul>
+
+            </ul>
+
+        </div>
+        <form>
+            <div>
+                <label for="name">Enter your name:</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="age">Enter your age:</label>
+                <input type="number" name="age" id="age" min="18">
+            </div>
+            <div>
+                <input type="submit">
+            </div>
+            <div></div>
+        </form>
+
+        <!-- <script src="validation.js"></script> -->
+        <script>
+
+            const inputs = document.querySelectorAll('input');
+            const labels = document.querySelectorAll('label');
+            const form = document.querySelector('form');
+            
+            let formItems = [];
+            
+            const errorField = document.querySelector('.errors');
+            const errorList = document.querySelector('.errors ul');
+            
+            for(let i = 0; i < inputs.length-1; i++) {
+                let obj = {};
+                obj.label = labels[i];
+                obj.input = inputs[i];
+                formItems.push(obj);
+            }
+            
+            errorField.style.left = '-100%';
+            
+            form.onsubmit = validate;
+            
+            function validate(e) {
+                errorList.innerHTML = '';
+                for(let i = 0; i < formItems.length; i++) {
+                    let testItem = formItems[i];
+                    if(testItem.input.value === '') {
+                        errorField.style.left = '360px';
+                        createLink(testItem);
+                    }
+                }
+                
+                if(errorList.innerHTML !== '') {
+                    e.preventDefault();
+                }
+            }
+            
+            function createLink(testItem) {
+                const listItem = document.createElement('li');
+                const anchor = document.createElement('a');
+                anchor.textContent = testItem.input.name + ' field is empty: fill in your ' + testItem.input.name + '.';
+                anchor.href = '#' + testItem.input.name;
+                anchor.onclick = function() {
+                    testItem.input.focus();
+                };
+                listItem.appendChild(anchor);
+                errorList.appendChild(listItem);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,222 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ugly controls basic styling</title>
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+        <style>
+            html {
+                background-color: rgb(125, 131, 112);
+            }
+
+            body {
+                font-family: 'Josefin Sans', sans-serif;
+                margin: 20px auto;
+                max-width: 400px;
+            }
+
+            form > div {
+                margin-bottom: 20px;
+            }
+
+            /* We've applied some global normalizing CSS to all the controls and their labels, 
+            to get them to size in the same way, adopt their parent font, etc. */
+            button, label, input, select, progress, meter {
+                display: block;
+                font-family: inherit;
+                font-size: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 5px;
+                height: 30px;
+            }
+
+            select {
+                -webkit-appearance: none;
+                appearance: none;
+            }
+
+            .select-wrapper {
+                position: relative;
+            }
+
+            .select-wrapper::after {
+                content: "▼@♥";
+                font-size: 1rem;
+                top: 6px;
+                right: 10px;
+                position: absolute;
+            }
+
+            /* We also added some uniform shadow and rounded corners to the controls. */
+            input[type="text"], input[type="datetime-local"], input[type="color"], select {
+                box-shadow: inset 1px 1px 3px #ccc;
+                border-radius: 5px;
+            }
+
+            label {
+                margin-bottom: 5px;
+            }
+
+            button {
+                width: 60%;
+                margin: 0 auto;
+            }
+
+            /* Range input types: to remove the default slider track completely 
+            and replace it with a custom style (a thin red track, in this case):*/
+            input[type="range"] {
+                appearance: none;
+                -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+                background: red; /* We can also apply this value (transparent) */
+                height: 2px;
+                padding: 0;
+                outline: 1px solid transparent;
+            }
+
+            /* You can remove the border, just leaving the block of color, using something like this: */
+            input[type="color"] {
+                border: 0;
+                padding: 0;
+            }
+
+            /*===== File input types: So you could hide the actual form input using something like this: */
+            input[type="file"] {
+                height: 0;
+                padding: 0;
+                opacity: 0;
+            }
+            /* And then style the label to act like a button, which when pressed will open the file picker as expected: */
+            label[for="file"] {
+                box-shadow: 1px 1px 3px #ccc;
+                background: linear-gradient(to bottom, #eee, #ccc);
+                border: 1px solid rgb(169, 169, 169);
+                border-radius: 5px;
+                text-align: center;
+                line-height: 1.5;
+            }
+            label[for="file"]:hover {
+                background: linear-gradient(to bottom, yellow, green);
+            }
+            label[for="file"]:active {
+                box-shadow: inset 1px 1px 3px red;
+            }
+            /*===== the above lines are for the same purpose for 'styling the file picker'*/
+
+            /* */
+            progress {
+  margin: 4px;
+}
+
+progress:indeterminate {
+  width:80vw;
+  height:20px;
+}
+        </style>
+    </head>
+
+    <body>
+        <form>
+            <div>
+                <label for="select">Select box:</label>
+                <div class="select-wrapper">
+                    <select id="select" name="select">
+                        <option>Banana</option>
+                        <option>Cherry</option>
+                        <option>Lemon</option>
+                        <option>Avocado</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label for="myFruit">"Favorite fruit?" datalist:</label>
+                <input type="text" name="myFruit" id="myFruit" list="mySuggestion">
+                <datalist id="mySuggestion">
+                    <option>Apple</option>
+                    <option>Banana</option>
+                    <option>Blackberry</option>
+                    <option>Blueberry</option>
+                    <option>Lemon</option>
+                    <option>Lychee</option>
+                    <option>Peach</option>
+                    <option>Pear</option>
+                    <option>Pomegranate</option>
+                </datalist>
+            </div>
+            <div>
+                <label for="date1">Datetime local: </label>
+                <input id="date1" name="date1" type="datetime-local">
+            </div>
+            <div>
+                <label for="range">Range: </label>
+                <input id="range" name="range" type="range">
+            </div>
+            <div>
+                <label for="range">Range: </label>
+                <input id="range" name="range" type="range">
+            </div>
+            <div>
+                <label for="color">Color: </label>
+                <input id="color" name="color" type="color">
+            </div>
+            <div>
+                <label for="file">File picker: </label>
+                <input id="file" name="file" type="file" multiple>
+                <ul id="file-list">
+
+                </ul>
+            </div>
+            <div>
+                <label for="progress">Progress: 75/100 right now</label>
+                <progress max="100" value="75" id="progress">75/100</progress>
+            </div>
+            <div>
+                <label for="meter">Meter: 75% right now</label>
+                <meter  id="meter" min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter>
+            </div>
+            <div>
+                <progress></progress>
+            </div>
+            <div><button>Submit?</button></div>
+            <p>A spinner that you can use to increment/decrement values.</p>
+            <input type="number">
+        </form>
+
+        <script>
+            const fileInput = document.querySelector('#file');
+            const fileList = document.querySelector('#file-list');
+
+            fileInput.addEventListener('change', updateFileList);
+
+            function updateFileList() {
+                while(fileList.firstChild) {
+                fileList.removeChild(fileList.firstChild);
+                }
+
+                let curFiles = fileInput.files;
+
+                if(!(curFiles.length === 0))  {
+                    console.log('test');
+                    for(let i = 0; i < curFiles.length; i++) {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = 'File name: ' + curFiles[i].name + '; file size ' + returnFileSize(curFiles[i].size) + '.';
+                        fileList.appendChild(listItem);
+                    }
+                }
+            }
+
+            function returnFileSize(number) {
+                if(number < 1024) {
+                    return number + 'bytes';
+                } else if(number >= 1024 && number < 1048576) {
+                    return (number/1024).toFixed(1) + 'KB';
+                } else if(number >= 1048576) {
+                    return (number/1048576).toFixed(1) + 'MB';
+                }
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,44 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Simple setInterval clock</title>
+        <style>
+            p {
+                font-family: sans-serif;
+                background-color: blueviolet;
+                color: chartreuse;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="clock"></p>
+
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+        <button class="reset">Reset</button>
+          
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+            
+            // The below example uses a recursive setTimeout() to run the passed function every 100 milliseconds:
+            let i = 1;
+
+            // setTimeout(function run() {
+            //     console.log(i);
+            //     i++;
+            //     setTimeout(run, 100);
+            // }, 100);
+
+            // Compare the above example to the following one — this uses setInterval() to accomplish the same effect:
+            let j = 2;
+
+            // setInterval(function run() {
+            //     console.log(j);
+            //     j++;
+            // }, 100);
+
+        </script>
+    </body>
+</html>

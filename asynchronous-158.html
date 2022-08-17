@@ -1,0 +1,39 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Person greeter app</title>
+    </head>
+    <body>
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+
+            let myGreeting = setTimeout(function() {
+                alert('Hello, Mr. Universe!');
+            }, 2000)
+
+            //  You can give your function a name, and even define it somewhere else and pass a function reference to the setTimeout(). The following two versions of the code snippet are equivalent to the first one:
+            // With a named function
+            let myGreeting_2 = setTimeout(function sayHi() {
+                alert('Hello, Mr. Universe! 2');
+            }, 2000);
+
+            // With a function defined separately
+            function sayHi() {
+                alert('Hello Mr. Universe! 3');
+            }
+            let myGreeting_3 = setTimeout(sayHi, 2000);
+
+            // This will say "hi" to whatever person's name is passed to it:
+            function sayHi(who) {
+                alert(`Hello ${who}!`);
+            }
+            let myGreeting_4 = setTimeout(sayHi, 2000, 'Mr. High School');
+
+            // Clearing timeouts, choose one fnc as a parameter.
+            clearTimeout(myGreeting, myGreeting_2, myGreeting_3, myGreeting_4);
+
+        </script>
+    </body>
+</html>

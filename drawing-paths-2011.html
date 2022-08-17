@@ -1,0 +1,67 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas</title>
+        <!-- <script src="script.js" defer></script>
+        <link href="style.css" rel="stylesheet"> -->
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas class="myCanvas">
+            <p>Add suitable fallback here</p>
+        </canvas>
+    </body>
+    <script>
+        // Canvases with no explicit width and height default to 300 pixels wide by 150 pixels high.
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+
+        // To draw onto the canvas we need to get a special reference to the drawing area called a context.
+        const ctx = canvas.getContext('2d'); 
+
+        // We'll color the canvas background black.
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        // Drawing lines, This function converts degree values to radians.
+        function degToRad(degrees) {
+            return degrees * Math.PI / 180;
+        }; 
+
+        // Here we set a color for our triangle.
+        ctx.fillStyle = 'rgb(255, 0, 0)';
+        ctx.beginPath();
+        ctx.moveTo(50, 50);
+
+        // Our drawing lines down below
+        ctx.lineTo(150, 50);
+        const triHeight = 50 * Math.tan(degToRad(60));
+        ctx.lineTo(100, 50 + triHeight);
+        ctx.lineTo(50, 50);
+
+        // We run ctx.fill() to end the path and fill in the shape.
+        ctx.fill();
+        
+        // Let's add an arc to our canvas.
+        ctx.fillStyle = 'rgb(0, 0, 255)';
+        ctx.beginPath();
+        ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+        ctx.fill();
+
+        // Let's try adding another arc.
+        ctx.fillStyle = 'yellow';
+        ctx.beginPath();
+        ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+        ctx.lineTo(200, 106);
+        ctx.fill();
+    </script>
+</html>

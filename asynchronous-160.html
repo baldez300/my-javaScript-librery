@@ -1,0 +1,34 @@
+﻿
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Simple setInterval clock</title>
+        <style>
+        p {
+            font-family: sans-serif;
+            background-color: blueviolet;
+            color: chartreuse;
+        }
+        </style>
+    </head>
+    <body>
+        <p class="clock"></p>
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+
+            function displayTime() {
+                let date = new Date();
+                let time = date.toLocaleTimeString();
+                document.querySelector('.clock').textContent = time;
+            }
+
+            displayTime();
+            const createClock = setInterval(displayTime, 1000);
+
+            // Clearing intervals.
+            clearInterval(createClock);
+
+        </script>
+    </body>
+</html>

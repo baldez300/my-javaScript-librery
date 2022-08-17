@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Conditionals: Task 4</title>
+        <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        </style>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+
+        <section class="preview">
+
+
+
+        </section>
+
+    </body>
+    <script>
+        document.querySelector('html').style.backgroundColor = 'black';
+        let machineActive = true;
+        let pwd = 'cheese';
+
+        let machineResult;
+        let pwdResult;
+
+        // Add your code here
+        if (machineActive) {
+            machineResult = 'The machine is switched on, you can play!!';
+        } else {
+            machineResult = 'Switch the machine on, if you wanna play?';
+        }
+
+        pwd === 'cheese'?pwdResult='You logged in successfully.':pwdResult='Login attempt was not successful.'
+
+        // Don't edit the code below here!
+
+        const section = document.querySelector('section');
+
+        let para1 = document.createElement('p');
+        let para2 = document.createElement('p');
+
+        para1.textContent = machineResult;
+        para2.textContent = pwdResult;
+
+        section.appendChild(para1);
+        section.appendChild(para2);
+    </script>
+
+</html>

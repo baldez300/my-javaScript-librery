@@ -1,0 +1,53 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas</title>
+        <!-- <script src="script.js" defer></script>
+        <link href="style.css" rel="stylesheet"> -->
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas class="myCanvas">
+            <p>Add suitable fallback here</p>
+        </canvas>
+    </body>
+    <script>
+        // Canvases with no explicit width and height default to 300 pixels wide by 150 pixels high.
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+
+        // To draw onto the canvas we need to get a special reference to the drawing area called a context.
+        const ctx = canvas.getContext('2d'); 
+
+        // We'll color the canvas background black.
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = 'rgb(255, 0, 0)';
+        ctx.fillRect(50, 50, 100, 150);
+
+        ctx.fillStyle = 'rgb(0, 255, 0)';
+        ctx.fillRect(75, 75, 100, 100);
+
+        ctx.fillStyle = 'rgba(255, 0, 255, 0.75)';
+        ctx.fillRect(25, 100, 175, 50);
+        
+        // Now I try drawing some more rectangles of your own
+        ctx.fillStyle = 'rgba(0, 0, 255, 0.7)';
+        ctx.fillRect(50, 50, 80, 25)
+
+        // Strokes and line widths (this is foe the lines around he canvases)
+        ctx.strokeStyle = 'rgb(255, 255, 255)';
+        ctx.lineWidth = 9;
+        ctx.strokeRect(25, 25, 175, 200);
+    </script>
+</html>

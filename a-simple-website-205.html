@@ -1,0 +1,656 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Accessibility assessment</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /* || General setup */
+
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+
+            html {
+                font-size: 10px;
+                background-color: lightslategray;
+            }
+
+            body {
+                width: 80%;
+                min-width: 1024px;
+                margin: 0 auto;
+                background-color: lightsalmon;
+            }
+
+            /* || typography */
+
+            h1, h2, h3 {
+                font-family: 'Sonsie One', cursive;
+                color: #2a2a2a;
+            }
+
+            p, input, li, table, label {
+                font-family: 'Open Sans Condensed', sans-serif;
+                color: #2a2a2a;
+            }
+
+            h1 {
+                font-size: 4rem;
+                text-align: center;
+                color: white;
+                text-shadow: 2px 2px 10px blue;
+            }
+
+            h2 {
+                font-size: 3rem;
+                text-align: center;
+            }
+
+            h3 {
+                font-size: 2.2rem;
+            }
+
+            p, li, table {
+                font-size: 1.6rem;
+                line-height: 1.5;
+            }
+
+            /* || header layout */
+
+            nav, article, footer, .secondary {
+                background-color: yellowgreen;
+            }
+
+            article, footer, .secondary {
+                padding: 10px 30px;
+            }
+
+            article {
+                margin-right: 10px;
+            }
+
+            nav {
+                height: 50px;
+                display: flex;
+                padding: 1% 0;
+                margin-bottom: 10px;
+            }
+
+            nav ul {
+                padding: 0;
+                list-style-type: none;
+                flex: 2;
+                display: flex;
+            }
+
+            nav li {
+                display: inline;
+                text-align: center;
+                flex: 1;
+            }
+
+            nav a {
+                display: inline-block;
+                font-size: 2rem;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: black;
+            }
+
+            nav .search {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                height: 100%;
+                padding: 0 2em;
+            }
+
+            .search input {
+                font-size: 1.6rem;
+                height: 32px;
+            }
+
+            .search input[type="search"] {
+                flex: 3;
+            }
+
+            .search input[type="submit"] {
+                flex: 1;
+                margin-left: 1rem;
+                background: #333;
+                border: 0;
+                color: white;
+            }
+
+            /* || main layout */
+
+            main {
+                display: flex;
+            }
+
+            article {
+                flex: 5;
+            }
+
+            .secondary {
+                flex: 2;
+            }
+
+            footer {
+                margin-top: 10px;
+            }
+
+            /* Table styling */
+
+            table {
+                width: 100%;
+                background-color: #dde;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            td {
+                text-align: center;
+            }
+
+            th[scope="col"] {
+                border-bottom: 1px solid black;
+            }
+
+            tbody tr:nth-child(odd) {
+                background-color: #def;
+            }
+
+            /* styling content images and audio */
+
+            img, audio {
+                display: block;
+                margin: 0 auto;
+            }
+
+            audio {
+                width: 500px;
+            }
+
+            /* Comments styling */
+
+            .comments {
+                background-color: #def;
+                padding: 10px;
+            }
+
+            .show-hide {
+                cursor: pointer;
+            }
+
+            .comments h2 {
+                font-size: 2rem;
+            }
+
+            .comments h2:nth-of-type(2) {
+                margin-bottom: 0;
+            }
+
+            .comment-form {
+                margin-bottom: 3rem;
+            }
+
+            .comment-form .flex-pair {
+                display: flex;
+                padding: 0 3rem 1rem;
+            }
+
+            .comment-form label {
+                align-self: center;
+                flex: 2;
+                text-align: right;
+            }
+
+            .comment-form input {
+                margin-left: 1rem;
+                flex: 6;
+            }
+
+            .comment-form input, .comment-form label, .show-hide {
+                font-size: 1.6rem;
+                height: 32px;
+            }
+
+            .comment-form input[type="submit"], .show-hide {
+                background: #333;
+                border: 0;
+                color: white;
+            }
+
+            .comment-form input[type="submit"] {
+                width: 30%;
+                display: block;
+                margin: 0 auto;
+            }
+
+            .comment-container {
+                margin-top: 0;
+            }
+
+            .comment-container li {
+                list-style-type: none;
+                display: flex;
+            }
+
+            .comment-container li p:nth-child(1) {
+                flex: 1;
+                font-weight: bold;
+            }
+
+            .comment-container li p:nth-child(2) {
+                flex: 5;
+            }
+            /* ======================= OTHER CSS FORMAT NOT COMPULSORY ==================== */
+            /* cyrillic-ext */
+            @font-face {
+                font-family: 'Open Sans Condensed';
+                font-style: normal;
+                font-weight: 300;
+                src: url(https://fonts.gstatic.com/s/opensanscondensed/v21/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDujMR7eS2AopSg.woff2) format('woff2');
+                unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+            }
+            /* cyrillic */
+            @font-face {
+                font-family: 'Open Sans Condensed';
+                font-style: normal;
+                font-weight: 300;
+                src: url(https://fonts.gstatic.com/s/opensanscondensed/v21/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDuHMR7eS2AopSg.woff2) format('woff2');
+                unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+            }
+            /* greek-ext */
+            @font-face {
+                font-family: 'Open Sans Condensed';
+                font-style: normal;
+                font-weight: 300;
+                src: url(https://fonts.gstatic.com/s/opensanscondensed/v21/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDunMR7eS2AopSg.woff2) format('woff2');
+                unicode-range: U+1F00-1FFF;
+            }
+            /* greek */
+            @font-face {
+                font-family: 'Open Sans Condensed';
+                font-style: normal;
+                font-weight: 300;
+                src: url(https://fonts.gstatic.com/s/opensanscondensed/v21/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDubMR7eS2AopSg.woff2) format('woff2');
+                unicode-range: U+0370-03FF;
+            }
+            /* vietnamese */
+            @font-face {
+                font-family: 'Open Sans Condensed';
+                font-style: normal;
+                font-weight: 300;
+                src: url(https://fonts.gstatic.com/s/opensanscondensed/v21/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDurMR7eS2AopSg.woff2) format('woff2');
+                unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+            }
+            /* latin-ext */
+            @font-face {
+                font-family: 'Open Sans Condensed';
+                font-style: normal;
+                font-weight: 300;
+                src: url(https://fonts.gstatic.com/s/opensanscondensed/v21/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDuvMR7eS2AopSg.woff2) format('woff2');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+            /* latin */
+            @font-face {
+                font-family: 'Open Sans Condensed';
+                font-style: normal;
+                font-weight: 300;
+                src: url(https://fonts.gstatic.com/s/opensanscondensed/v21/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDuXMR7eS2Ao.woff2) format('woff2');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            /* latin-ext */
+            @font-face {
+                font-family: 'Sonsie One';
+                font-style: normal;
+                font-weight: 400;
+                src: url(https://fonts.gstatic.com/s/sonsieone/v19/PbymFmP_EAnPqbKaoc18UVK203Tq4JIsuA.woff2) format('woff2');
+                unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+            }
+            /* latin */
+            @font-face {
+                font-family: 'Sonsie One';
+                font-style: normal;
+                font-weight: 400;
+                src: url(https://fonts.gstatic.com/s/sonsieone/v19/PbymFmP_EAnPqbKaoc18UVy203Tq4JI.woff2) format('woff2');
+                unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            }
+            #map {
+                width: 1000px;
+                height: 500px;
+            }
+        </style>
+
+        <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <header>
+            <h1>Welcome to our wildlife website</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our team</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+
+            <form class="search">
+                <input type="search" name="q" placeholder="Search query" aria-label="Search through site content">
+                <input type="submit" value="Go!">
+            </form>
+        </nav>
+
+        <main>
+            <article>
+                <h2>The trouble with Bears</h2>
+
+                <p>By Evan Wild</p>
+
+                <p>Tall, lumbering, angry, dangerous. The real live bears of this world are proud, independent creatures, self-serving and always on the hunt for food. Nothing like the bears you see on TV, like Baloo from renowned documentary, The Jungle Book.</p>
+
+                <p>So what are bears really like, and why does the world's media portray them with such a skewed vision? In this article we try to answer those questions, and give you a real insight into the life of the bear.</p>
+
+                <h3>Types of bear</h3>
+
+                <p>Bears come in two varieties — large and medium. You don't get small bears. If you have seen a small bear, then it was in fact probably a baby bear (cub) from another species.</p>
+
+                <p>Bears can also be classified in terms of their habitat — both large and medium bears are just as at home in urban areas as they are in the countryside. Different habitats encourange different behaviour however, as you'll find out below. The below table also gives you some useful facts about bears.</p>
+
+                <table summary="Useful statistics about wild and urban bears">
+                <thead>
+                    <tr>
+                        <th scope="col">Bear Type</th>
+                        <th scope="col">Coat</th>
+                        <th scope="col">Adult size</th>
+                        <th scope="col">Habitat</th>
+                        <th scope="col">Lifespan</th>
+                        <th scope="col">Diet</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Wild</th>
+                            <td>Brown or black</td>
+                            <td>1.4 to 2.8 meters</td>
+                            <td>Woods and forests</td>
+                            <td>25 to 28 years</td>
+                            <td>Fish, meat, plants</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Urban</th>
+                            <td>North Face</td>
+                            <td>18 to 22</td>
+                            <td>Condos and coffee shops</td>
+                            <td>20 to 32 years</td>
+                            <td>Starbucks, sushi</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Habitats and Eating habits</h3>
+
+                <p>Wild bears eat a variety of meat, fish, fruit, nuts, and other natually growing ingredients. In general they will hunt for food themselves in woodland or rivers, but at a push they will track down their sustenance from farms or country houses. They tend to live in relative isolation, in caves, tents, or cottages. The below image shows <span id="wild-label">a big brown wild bear, standing in a river looking for fish to eat</span>.</p>
+
+                <img src="media/wild-bear.jpg" aria-labelledby="wild-label">
+
+                <p>Urban (gentrified) bears on the other hand have largely abandoned the old ways. They will hunt other urban creatures if necessary (including other predators like rats and foxes), but prefer to scavenge from readily available urban food outlets like dumpsters, bins, and fast food joints. When food has proven scarce, urban bears have even been known to break into people's kitchens and steal essentials like baked beans, ready meals, and microwave ovens. Below you can see <span id="urban-label">an urban polar bear, looking through the railings of his garden while contemplating whether to eat at Nandos or Taco Bell</span>.</p>
+
+                <img src="media/urban-bear.jpg" aria-labelledby="urban-label">
+
+                <p>Urban bears will sleep anywhere they can, from bus shelters and parks, to the toilets in McDonalds, to their own apartment.</p>
+
+                <h3>Mating rituals</h3>
+
+                <p>Bears are romantic creatures by nature, and will naturally look for a mate that they can spend the rest of their lives with. They will woo a potential suitor by making their dwelling look attractive — for example with cave paintings or a bed of reeds in the case of a wild bear, and mood lighting and a Michael Bublé CD in the case of an urban bear.</p>
+
+                <p>The following audio clip contains a fact file providing more details about bear mating rituals, along with samples and quotes from experts. You can also access a <a href="transcript.html">text transcript of the audio clip</a>.</p>
+
+                <audio controls>
+                    <source src="media/Balden_esittely.mp4" type="audio/mp4">
+                    <source src="media/Balden_esittely.ogg" type="audio/ogg">
+                    <p>It looks like your browser doesn't support HTML5 audio players. Here is a <a href="media/Balden_esittely">direct link to the audio file</a> instead.</p>
+                </audio>
+                <br>
+                <br>
+                <p>Down below is an embedded simple video </p>
+                <!-- Simple video starts ========================= -->
+                    <div>
+                        <video id="video" src="media/video.mp4" controls="true"></video>
+                    </div>
+                    <div>
+                        <canvas id="c1" width="160" height="96"></canvas>
+                        <canvas id="c2" width="160" height="96"></canvas>
+                    </div>
+                    <script type="text/javascript" src="processor.js"></script>
+                <!-- Simple video ends ========================= -->
+                <br>
+                <br>
+                <p>Down below is an embedded YouTube video through YouTube API</p>
+                <!-- Satrt video ==================================================== -->
+                    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                    <div id="player"></div>
+
+                    <script>
+                    // This is for the background color
+                    document.querySelector('html').style.backgroundColor = 'grey';
+
+                    // 2. This code loads the IFrame Player API code asynchronously.
+                    let tag = document.createElement('script');
+
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    let firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                    // 3. This function creates an <iframe> (and YouTube player)
+                    //    after the API code downloads.
+                    let player;
+                    function onYouTubeIframeAPIReady() {
+                        player = new YT.Player('player', {
+                            height: '290',
+                            width: '540',
+                            videoId: 'M7lc1UVf-VE',
+                            playerVars: {
+                                'playsinline': 1
+                            },
+                            events: {
+                                'onReady': onPlayerReady,
+                                'onStateChange': onPlayerStateChange
+                            }
+                        });
+                    }
+
+                    // 4. The API will call this function when the video player is ready.
+                    function onPlayerReady(event) {
+                        event.target.playVideo();
+                    }
+
+                    // 5. The API calls this function when the player's state changes.
+                    //    The function indicates that when playing a video (state=1),
+                    //    the player should play for six seconds and then stop.
+                    let done = false;
+                    function onPlayerStateChange(event) {
+                        if (event.data == YT.PlayerState.PLAYING && !done) {
+                        setTimeout(stopVideo, 6000);
+                        done = true;
+                        }
+                    }
+                    function stopVideo() {
+                        player.stopVideo();
+                    }
+                    </script>
+                <!-- End video ====================================================== -->
+
+                <aside>
+
+                    <h3>About the author</h3>
+
+                    <p>Evan Wild is an unemployed plumber from Doncaster, who has been really "in to" wildlife since childhood. He once went to Chester Zoo on holiday, but got ill after eating a doner kebab.
+
+                    <p>He has never seen a bear, but once read a Daily Mail article about them, and thinks they sound cool.</p>
+
+                </aside>
+                <section class="comments">
+                    <button class="show-hide">Show comments</button>
+
+                    <div class="comment-wrapper">
+
+                        <h2>Add comment</h2>
+
+                        <form class="comment-form">
+                            <div class="flex-pair">
+                                <label for="name">Your name:</label>
+                                <input type="text" name="name" id="name" placeholder="Enter your name">
+                            </div>
+                            <div class="flex-pair">
+                                <label for="comment">Your comment:</label>
+                                <input type="text" name="comment" id="comment" placeholder="Enter your comment">
+                            </div>
+                            <div>
+                                <input type="submit" value="Submit comment">
+                            </div>
+                        </form>
+
+                        <h2>Comments</h2>
+
+                        <ul class="comment-container">
+
+                            <li>
+
+                                <p>Bob Fossil</p>
+
+                                <p>Oh I am so glad you taught me all about the big brown angry guys in the woods. With their sniffing little noses and their bad attitudes, they can sure be a menace — I was thinking of putting them all in a truck and driving them outta here. I run a zoo, you know.</p>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </section>
+            </article>
+
+            <div class="secondary">
+                <h2>Related</h2>
+
+                <ul>
+                    <li><a href="#">The trouble with Bees</a></li>
+                    <li><a href="#">The trouble with Otters</a></li>
+                    <li><a href="#">The trouble with Penguins</a></li>
+                    <li><a href="#">The trouble with Octopi</a></li>
+                    <li><a href="#">The trouble with Lemurs</a></li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- The map API lines below ============================ -->
+            <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+            <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css"/>
+            <script>
+                // 1. The basic part of the example
+                var L;
+    
+                window.onload = function() {
+                    L.mapquest.key = 'T3WyfFAZiL7kJcKfh3fG6ZZgp0SqzIO2';
+    
+                    // 'map' refers to a <div> element with the ID map
+                    var map = L.mapquest.map('map', {
+                        center: [60.162059, 24.945831],
+                        layers: L.mapquest.tileLayer('satellite'), //'map, hybrid, satellite, dark, light'
+                        zoom: 13
+                    });
+    
+                    // You can expand the controls available using the "map.addControl()" method.
+                    // There are other types of control available, for example "L.mapquest.searchControl() and L.mapquest.satelliteControl()"
+                    // You can adjust the position by specifying an options object as a parameter for the control containing a position property.
+                    map.addControl(L.mapquest.control({position : 'bottomright'}));
+    
+                    // Adding a marker (icon) at a certain point on the map is easy — you just use the L.marker() method.
+                    L.marker([60.172059, 24.941631], {
+                        icon: L.mapquest.icons.marker({
+                            primaryColor: '#22407F',
+                            secondaryColor: '#3B5998',
+                            shadow: true,
+                            size: 'md',
+                            symbol: 'P'
+                        })
+                    })
+                    .bindPopup('This is Helsinki')
+                    .addTo(map);
+                }
+            </script>
+            <h3>Simple Mapquest example</h3>
+            <div id="map"></div>
+        <!-- The map API lines end here ============================== -->
+        <!-- </main> -->
+
+        <footer>
+            <p>©Copyright 2022 by balde-web-media. All rights reversed.</p>
+        </footer>
+
+        <script>
+            // functionality for showing/hiding the comments section
+
+            const showHideBtn = document.querySelector('.show-hide');
+            const commentWrapper = document.querySelector('.comment-wrapper');
+
+            commentWrapper.style.display = 'none';
+
+            showHideBtn.onclick = function() {
+                let showHideText = showHideBtn.textContent;
+                if(showHideText === 'Show comments') {
+                    showHideBtn.textContent = 'Hide comments';
+                    commentWrapper.style.display = 'block';
+                } else {
+                    showHideBtn.textContent = 'Show comments';
+                    commentWrapper.style.display = 'none';
+                }
+            };
+
+            // functionality for adding a new comment via the comments form
+
+            const form = document.querySelector('.comment-form');
+            const nameField = document.querySelector('#name');
+            const commentField = document.querySelector('#comment');
+            const list = document.querySelector('.comment-container');
+
+            form.onsubmit = function(e) {
+                e.preventDefault();
+                submitComment();
+            };
+
+            function submitComment() {
+                const listItem = document.createElement('li');
+                const namePara = document.createElement('p');
+                const commentPara = document.createElement('p');
+                const nameValue = nameField.value;
+                const commentValue = commentField.value;
+
+                namePara.textContent = nameValue;
+                commentPara.textContent = commentValue;
+
+                list.appendChild(listItem);
+                listItem.appendChild(namePara);
+                listItem.appendChild(commentPara);
+
+                nameField.value = '';
+                commentField.value = '';
+            }
+        </script>
+
+    </body>
+</html>

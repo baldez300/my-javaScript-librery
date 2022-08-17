@@ -1,0 +1,44 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Demonstration of fast async/await</title>
+    </head>
+    <body>
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+
+            // Define a class object
+
+            class Person {
+                constructor(first, last, age, gender, interests) {
+                    this.name = {
+                        first,
+                        last
+                    };
+                    this.age = age;
+                    this.gender = gender;
+                    this.interests = interests;
+                }
+
+                // You can even add async in front of class/object methods to make them return promises, and "await" promises inside them.
+                async greeting() {
+                    return await Promise.resolve(`Hi! I'm ${this.name.first}`);
+                };
+
+                // Here we din't use a promise
+                farewell() {
+                    console.log(`${this.name.first} has left the building. Bye for now!`);
+                };
+            }
+
+            let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
+
+            han.greeting().then(console.log);
+
+            han.farewell()
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas</title>
+        <!-- <script src="script.js" defer></script>
+        <link href="style.css" rel="stylesheet"> -->
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas class="myCanvas">
+            <p>Add suitable fallback here</p>
+        </canvas>
+    </body>
+    <script>
+        // Canvases with no explicit width and height default to 300 pixels wide by 150 pixels high.
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+
+        // To draw onto the canvas we need to get a special reference to the drawing area called a context.
+        const ctx = canvas.getContext('2d'); 
+
+        // We'll color the canvas background black.
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        // The following line once again make the coordinate origin sit in the middle of the canvas.
+        ctx.translate(width/2, height/2);
+
+        // Set its src to the image we want to load, and add an onload event handler.
+        const image = new Image();
+        image.src = 'images/walk-right.png';
+        image.onload = draw;
+
+        // We'll add some variables to keep track of the position the sprite is to be drawn on the screen.
+        let sprite = 0;
+        let posX = 0
+
+        function draw() {
+            // Add the following line, which clears the canvas to prepare for drawing each frame.
+            ctx.fillRect(-(width/2), -(height/2), width, height);
+
+            // Next, we'll draw our image using drawImage — the 9-parameter version.
+            ctx.drawImage(image, (sprite * 95), 0, 100, 150, 0+posX, -74, 100, 150);
+
+            // Now we'll alter the sprite value after each draw.
+            if (posX % 13 === 0) {
+                if (sprite === 5) {
+                    sprite = 0;
+                } else {
+                    sprite++;
+                }
+            }
+
+            // Next we need to work out how to change the posX value on each frame.
+            if (posX > width/2) {
+                let newStartPos = -((width/2) + 102);
+                posX = Math.ceil(newStartPos);
+                console.log(posX);
+            } else {
+                posX += 2
+            }
+
+            // Finally, we need to make the animation loop by calling:
+            //window.requestAnimationFrame(draw);
+
+            // The loop ends when you stop calling requestAnimationFrame() or 
+            // if you call window.cancelAnimationFrame() after calling requestAnimationFrame() but before the frame is called.
+
+            window.cancelAnimationFrame(draw);
+        }
+    </script>
+</html>

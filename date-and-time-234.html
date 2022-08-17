@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Button examples</title>
+        <style>
+            html {
+                background-color: lightslategray;
+            }
+
+            input {
+                margin: .2rem 0;
+            }
+/* ======== style for contenteditable only ========== */
+            .output {
+                font: 1rem 'Fira Sans', sans-serif;
+            }
+
+            blockquote {
+                background: #eee;
+                border-radius: 5px;
+                margin: 16px 0;
+            }
+
+            blockquote p {
+                padding: 15px;
+            }
+
+            cite {
+                margin: 16px 32px;
+            }
+
+            blockquote p::before {
+                content: '\201C';
+            }
+
+            blockquote p::after {
+                content: '\201D';
+            }
+
+            [contenteditable='true'] {
+                caret-color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <p>datetime-local</p>
+        <input type="datetime-local" name="datetime" id="datetime">
+
+        <p>month</p>
+        <input type="month" name="month" id="month">
+
+        <p>time</p>
+        <input type="time" name="time" id="time">
+
+        <p>week</p>
+        <input type="week" name="week" id="week">
+
+        <p>Constraining date/time values</p>
+        <label for="myDate">When are you available this summer?</label>
+        <input type="date" name="myDate" min="2022-06-01" max="2022-06-30" step="2" id="myDate">
+
+        <p>Color picker control</p>
+        <input type="color" name="color" id="color">
+
+        <p>The Input (Form Input) element</p>
+        <label for="name">Name (4 to 8 characters):</label>
+
+        <input type="text" id="name" name="name" required minlength="4" maxlength="8" size="10">
+
+        <h3>Multi-line text fields</h3>
+        <textarea cols="30" rows="8"></textarea>
+
+        <h3>Contenteditable</h3>
+        <blockquote contenteditable="true">
+            <p>Edit this content to add your own quote</p>
+        </blockquote>
+        
+        <cite contenteditable="true">-- Write your own name here</cite>        
+    </body>
+
+</html>

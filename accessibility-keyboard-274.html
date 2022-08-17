@@ -1,0 +1,83 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fake div buttons</title>
+        <style>
+            body {
+                background-color: gray;
+            }
+
+            div {
+                background-color: rgb(240, 240, 240);
+                font-size: 11px;
+                font-family: sans-serif;
+                border: 1px outset rgb(218, 218, 218);
+                line-height: 20px;
+                padding: 0 6px;
+                width: 120px;
+                text-align: center;
+                border-radius: 5px;
+                margin-right: 10px;
+                cursor: pointer;
+                display: inline-block;
+            }
+
+            div:hover, div:focus {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Fake buttons</h2>
+
+        <div data-message="This is from the first button" tabindex="0">Click me!</div>
+        <div data-message="This is from the second button" tabindex="0">Click me too!</div>
+        <div data-message="This is from the third button" tabindex="0">And me!</div>
+
+        <br>
+        <h2>An example of good link text:</h2>
+        <p>Whales are really awesome creatures. <a href="whales.html">Find out more about whales</a>.</p>
+        
+        <h3>Further information</h3>
+        <ul>
+            <li><a href="whales.html">Further information on Whales</a>.</li>
+            <li><a href="squirrels.html">Further information on Squirrels</a>.</li>
+            <li><a href="bees.html">Further information on Bees</a>.</li>
+        </ul>
+        <br>
+
+        <h2>An example of bad link text:</h2>
+        <p>Whales are really awesome creatures. To find more out about whales, <a href="whales.html">click here</a>.</p>
+
+        <h3>Further information</h3>
+        <ul>
+            <li>For more information on whales, <a href="whales.html">click here</a>.</li>
+            <li>For more information on squirrels, <a href="squirrels.html">click here</a>.</li>
+            <li>For more information on bees, <a href="bees.html">click here</a>.</li>
+        </ul>
+
+        <script>
+            const buttons = document.querySelectorAll('div');
+
+            for(let i = 0; i < buttons.length; i++) {
+                addHandler(buttons[i]);
+            }
+
+            function addHandler(button) {
+                button.onclick = function(e) {
+                    let message = e.target.getAttribute('data-message');
+                    alert(message);
+                }
+            }
+
+            document.onkeydown = function(e) {
+                if(e.key === 'Enter') { // The Enter/Return key
+                    document.activeElement.onclick(e);
+                }
+            };
+        </script>
+    </body>
+</html>

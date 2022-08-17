@@ -1,0 +1,34 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Simple async sync example</title>
+    </head>
+    <body>
+        <script>
+            document.querySelector('html').style.backgroundColor = 'grey';
+            
+            console.log('Starting');
+            let image;
+
+            fetch('images/coffee.jpg').then((response) => {
+                console.log('It worked :)')
+                return response.blob();
+            }).then((myBlob) => {
+                let objectURL = URL.createObjectURL(myBlob);
+                image = document.createElement('img');
+                image.src = objectURL;
+                document.body.appendChild(image);
+
+            }).then(() => {
+                console.log ('All done! ' + image.src + ' displayed.');
+            }).catch((error) => {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+            });
+
+            // console.log ('All done!'); this is moved in in the last "then" above.
+            // console.log ('All done! ' + image.src + 'displayed.'); here it is not working because "image definition".
+        </script>
+    </body>
+</html>

@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Strings: Task 4</title>
+        <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+        html {
+            font-family: monospace;
+            background-color: #ddd0b8;
+            }
+
+        * {
+            box-sizing: border-box;
+        }
+        </style>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+
+        <section class="output">
+            <ul></ul>
+
+            <p></p>
+        </section>
+
+        
+
+    </body>
+    <script>
+        const list = document.querySelector('.output ul');
+        const totalBox = document.querySelector('.output p');
+        let total = 0;
+        list.innerHTML = '';
+        totalBox.textContent = '';
+        // number 1
+        let products = ['Underpants:6.99',
+                        'Socks:5.99',
+                        'T-shirt:14.99',
+                        'Trousers:31.99',
+                        'Shoes:23.99'];
+
+        for (let i = 0; i < products.length; i++) { // number 2
+        // number 3
+        let subArray = products[i].split(':');
+        let name = subArray[0];
+        let price = Number(subArray[1]);
+        // number 4
+        total += price;
+        // number 5
+        let itemText = name + ' --$' + price;
+
+        const listItem = document.createElement('li');
+        listItem.textContent = itemText;
+        list.appendChild(listItem);
+        }
+
+        totalBox.textContent = 'Total: $' + total.toFixed(2);
+    </script>
+
+</html>
