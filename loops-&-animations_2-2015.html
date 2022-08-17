@@ -1,0 +1,83 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Canvas</title>
+        <!-- <script src="script.js" defer></script>
+        <link href="style.css" rel="stylesheet"> -->
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas class="myCanvas">
+            <p>Add suitable fallback here</p>
+        </canvas>
+    </body>
+    <script>
+        // Canvases with no explicit width and height default to 300 pixels wide by 150 pixels high.
+        const canvas = document.querySelector('.myCanvas');
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+
+        // To draw onto the canvas we need to get a special reference to the drawing area called a context.
+        const ctx = canvas.getContext('2d'); 
+
+        // We'll color the canvas background black.
+        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillRect(0, 0, width, height);
+
+        // This contains a new method, translate(), which moves the origin point of the canvas:
+        ctx.translate(width/2, height/2);
+
+        // Functions definition
+        function degToRad(degrees) {
+            // Let's start by getting an image source to embed in our canvas.
+            const image = new Image();
+            image.src = 'images/firefox_2.png';
+
+            // We could now try to embed the image using drawImage(), but we need to make sure the image file has been loaded first, otherwise the code will fail.
+            image.addEventListener('load', () => ctx.drawImage(image, 20, 20, 285, 275, 50, 50, 285, 275));
+            return degrees * Math.PI / 100;
+        };
+
+        // Function that returns a random number between given lower and upper bounds, length and moveOffset variables.
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max-min+1)) + (min);
+        };
+
+        let length = 250;
+        let moveOffset = 20;
+
+        // The idea here is that we'll draw something on the canvas inside the for loop, and iterate on it each time so we can create something interesting.
+        for (let i = 0; i < length; i++) {
+            // Set the fillStyle to be a shade of slightly transparent yellow, which changes each time based on the value of length.
+            ctx.fillStyle = `rgba(${255-length}, 0, 0, 0.9)`;
+            // Begin the path.
+            ctx.beginPath();
+            // This variable defines how far we want to move each time we draw a new triangle.
+            ctx.moveTo(moveOffset, moveOffset);
+            // This draws a line of length "length" parallel to the X axis.
+            ctx.lineTo(moveOffset + length, moveOffset);
+            // Calculate the triangle's height, as before.
+            const triHeight = length/50 * Math.tan(degToRad(60));
+            // Draw a line to the downward-pointing corner of the triangle, then draw a line back to the start of the triangle.
+            ctx.lineTo(moveOffset + (length/2), moveOffset + triHeight);
+            ctx.lineTo(moveOffset, moveOffset);
+            // Call fill() to fill in the triangle.
+            ctx.fill();
+
+            // We decrease the length value by 1, so the triangles get smaller each time.
+            length--;
+            // Increase moveOffset by a small amount so each successive triangle is slightly further away.
+            moveOffset += 0.7;
+            // We rotate it by 5 degrees before drawing the next triangle.
+            ctx.rotate(degToRad(5));
+        }
+    </script>
+</html>

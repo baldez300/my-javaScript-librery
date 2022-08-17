@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Object basics: Task 2</title>
+        <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        </style>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+
+        <section class="preview">
+
+
+
+        </section>
+
+    </body>
+    <script>
+        document.querySelector('html').style.backgroundColor = 'gray';
+        
+        let bandInfo;
+
+        // Add your code here
+        let favoriteBand = {
+            name : 'Wu-Tang Clan',
+            nationality : 'United States of America',
+            genre : 'Hip hop',
+            members : 9,
+            formed : 1992,
+            split : false,
+            albums : [
+                {
+                    name : 'Wu-Tang Forever',
+                    released : 1998
+                },
+                {
+                    name : 'The W',
+                    released : 2000
+                },
+                {
+                    name : 'Iron Flag',
+                    released : 2001
+                },
+                {
+                    name : '8 Diagrams',
+                    released : 2007
+                },
+                {
+                    name : 'A Better Tomorrow ',
+                    released : 2014
+                }
+            ]
+        }
+
+        bandInfo = `The band is ${ favoriteBand.name }, the nationality is ${ favoriteBand.nationality }, 
+        years active: 1992–present, titles:
+        ${ favoriteBand.albums[0].name }, 
+        ${ favoriteBand.albums[1].name }, 
+        ${ favoriteBand.albums[2].name }, 
+        ${ favoriteBand.albums[3].name }, 
+        ${ favoriteBand.albums[4].name } and 
+        released years: 
+        ${ favoriteBand.albums[0].released }, 
+        ${ favoriteBand.albums[1].released }, 
+        ${ favoriteBand.albums[2].released }, 
+        ${ favoriteBand.albums[3].released }, 
+        ${ favoriteBand.albums[4].released }. GOOD!!`;
+
+        // THOSE LINES BELOW ARE DOING THE SAME AS THE ONES ABOVE.
+        let band = {
+            name : 'Wu-Tang Clan',
+            nationality : 'United States of America',
+            genre : 'Hip hop',
+            members : 9,
+            formed : 1992,
+            split : false,
+            albums : {
+                name : ['Wu-Tang Forever', 'The W', 'Iron Flag', '8 Diagrams','A Better Tomorrow '],
+                released : [1998, 2000, 2001, 2001, 2014]
+            }
+            
+        }
+
+        bandInfo = `The band is ${ band.name }, the nationality is ${ band.nationality }, their style is: ${ band.genre },
+        years active: 1992–present, titles:
+        ${ band.albums.name[0] }, released year: ${ band.albums.released[0] },
+        ${ band.albums.name[1] }, released year: ${ band.albums.released[0] },
+        ${ band.albums.name[2] }, released year: ${ band.albums.released[0] },
+        ${ band.albums.name[3] }, released year: ${ band.albums.released[0] }, and
+        ${ band.albums.name[4] }, released year: ${ band.albums.released[0] },
+        . 2nd Example this one.`;
+
+        // Don't edit the code below here!
+
+        const section = document.querySelector('section');
+        let para1 = document.createElement('p');
+        para1.textContent = bandInfo;
+        section.appendChild(para1);
+    </script>
+
+</html>

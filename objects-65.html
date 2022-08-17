@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>OOJS: Task 2</title>
+        <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        </style>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+
+        <section class="preview">
+
+
+
+        </section>
+
+    </body>
+    <script>
+        document.querySelector('html').style.backgroundColor = 'grey';
+
+        class Shape {
+            constructor(name, sides, sideLength){
+                this.name = name;
+                this.sides = sides;
+                this.sideLength = sideLength;
+            }
+        }
+
+        // Write your code below here
+        class Square extends Shape {
+            constructor(name, sides, sideLength){
+                super(name, sides, sideLength)
+            }
+
+            calcPerimeter(){
+                return this.sides * this.sideLength;
+            }
+        };
+        let square = new Square('square', 3, 5);
+        console.log(square.calcPerimeter());
+        //--__--__--__--__--__--__--__--__--//
+        
+        class Triangle extends Shape {
+            constructor(name, sides, sideLength){
+                super(name, sides, sideLength)
+            }
+
+            calcPerimeter(){
+                return this.sides * this.sideLength;
+            }
+        };
+        let triangle = new Triangle('triangle', 5, 3);
+        console.log(triangle.calcPerimeter());
+
+    </script>
+
+</html>

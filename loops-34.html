@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Basic for loop example</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div class="admitted"></div>
+        <div class="refused"></div>
+
+        <p></p>
+
+
+        <script>
+            document.querySelector('html').style.backgroundColor = 'gray';
+            
+            const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+
+            const admitted = document.querySelector('.admitted');
+            const refused = document.querySelector('.refused');
+            admitted.textContent = 'Admit: ';
+            refused.textContent = 'Refuse: ';
+
+            // let i = 0;
+            // while (i < people.length) {
+            //     if (people[i] === 'Phil' || people[i] === 'Lola') {
+            //         refused.textContent += people[i] + ', ';
+            //     } else {
+            //         admitted.textContent += people[i] + ', ';
+            //     }
+            //     i++;     
+            // }
+            // refused.textContent = refused.textContent.slice(0,refused.textContent.length-2) + ".";
+            // admitted.textContent = admitted.textContent.slice(0,admitted.textContent.length-2)+ ".";
+
+
+            // DOING THE SAME THING AS THE ONE COMMENTED ABOVE.
+            // let i = 0;
+            // do {
+            //     if (people[i] === 'Phil' || people[i] === 'Lola') {
+            //         refused.textContent += people[i] + ', ';
+            //     } else {
+            //         admitted.textContent += people[i] + ', ';
+            //     }
+            //     i++;
+            // } while (i < people.length);
+
+            // refused.textContent = refused.textContent.slice(0,refused.textContent.length-2) + '.';
+            // admitted.textContent = admitted.textContent.slice(0,admitted.textContent.length-2) + '.';
+
+            
+            // DOING THE SAME THING AS THE ONE COMMENTED ABOVE.
+            for (let i = 0; i < people.length; i++) {
+                if (people[i] === 'Phil' || people[i] === 'Lola') {
+                    refused.textContent += people[i] + ', ';
+                } else {
+                    admitted.textContent += people[i] + ', ';
+                }
+            }
+            refused.textContent = refused.textContent.slice(0,refused.textContent.length-2) + '.!'
+            admitted.textContent = admitted.textContent.slice(0,admitted.textContent.length-2) + '.!'
+
+            
+
+        </script>
+
+    </body>
+</html>

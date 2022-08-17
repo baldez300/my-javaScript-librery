@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Loops: Task 3</title>
+        <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        </style>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+
+        <section class="preview">
+
+
+
+        </section>
+
+    </body>
+    <script>
+        document.querySelector('html').style.backgroundColor = 'gray';
+        let i = 500;
+        let para = document.createElement('p');
+
+        function isPrime(num) {
+            for(let j = 2; j < num; j++) {
+                if(num % j === 0) {
+                return false;
+                }
+            }
+
+            return true;
+        }
+
+        // Add your code here
+
+        // A loop going through the numbers 2 to 500 __FORWARDS.
+
+        // function display(n) {
+        //     let arr = [2];
+        //     for ( let i = 3; i < n; i+=2 ) {
+        //         if ( isPrime(i) ) {
+        //             arr.push(i);
+        //         }
+        //     }
+        //     para.textContent = arr;
+        // }
+        // display(500);
+
+        // A loop going through the numbers 2 to 500 __BACKWARDS.
+        // for (i; i > 1; i--) {
+        //     if ( isPrime(i) ) {
+        //         if (i === 2) {
+        //             para.textContent += 'and ' + i + '.';
+        //         } else {
+        //             para.textContent +=  i + ', ';
+        //         }
+        //     }
+        // }
+
+        // SAME FUNTIONS AS THE FOR LOOP ABOVE
+        do {
+            if ( isPrime(i) ) {
+                if (i === 2) {
+                    para.textContent += 'AND++ ' + i + '.';
+                } else {
+                    para.textContent += i + ', ';
+                }
+            }
+            i--;
+        } while(i > 1);
+
+
+        // Don't edit the code below here!
+        let section = document.querySelector('section');
+        section.appendChild(para);
+    </script>
+
+</html>

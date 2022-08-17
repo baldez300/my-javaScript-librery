@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Simple contact search example</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+
+        <label for="number">Enter a number: </label>
+        <input id="number" type="text">
+        <button>Generate integer squares</button>
+
+        <p>Output: </p>
+
+
+        <script>
+            document.querySelector('html').style.backgroundColor = 'darkgray';
+            
+            const para = document.querySelector('p');
+            const input = document.querySelector('input');
+            const btn = document.querySelector('button');
+
+            btn.addEventListener('click', function() {
+                para.textContent = 'Output: ';
+                let num = input.value;
+                input.value = '';
+                input.focus();
+
+                for (let i = 1; i <= num; i++) {
+                    let sqRoot = Math.sqrt(i);
+                    if (Math.floor(sqRoot) !== sqRoot) {
+                        continue;
+                    }
+
+                    para.textContent += i + ' ';
+                }
+            });
+        
+        </script>
+
+    </body>
+</html>

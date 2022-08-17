@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Object-oriented JavaScript example</title>
+    </head>
+
+    <body>
+        <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+    </body>
+
+    <script>
+        document.querySelector('html').style.backgroundColor = 'grey';
+
+        function createNewPerson(name) {
+            const obj = {};
+            obj.name = name;
+            obj.greeting = function() {
+                alert('Hi! I\'m ' + obj.name + '.');
+            };
+            return obj;
+        }
+
+        // Instantiation // inherited start here, not same as above lines.
+        function Person(name) {
+            this.name = name;
+            this.greeting = function() {
+                alert('Hi! I\'m ' + this.name + '.');
+            };
+        }
+        let person1 = new Person('Bob');
+        let person2 = new Person('Sarah');
+        let person3 = new Person('Software => Programmer');
+
+        // Instantiation / inherited more complexe than above lines.
+        function Person_2(first, last, age, gender, interests) {
+            this.name = {
+                first : first,
+                last : last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+            this.bio = function() {
+                alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. He/She likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+            };
+            this.greeting = function() {
+                alert('Hi! I\'m ' + this.name.first + '.');
+            };
+        }
+        let person4 = new Person_2('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+        let person5 = new Person_2('Shasa', 'Balde', 22, 'female', ['dancing', 'reading']);
+    </script>
+</html>

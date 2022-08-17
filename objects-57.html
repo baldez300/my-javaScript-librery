@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Object-oriented JavaScript example</title>
+    </head>
+
+    <body>
+        <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+
+    </body>
+
+        <script>
+            document.querySelector('html').style.backgroundColor = 'gray';
+
+            const person = {
+                name: ['Bob', 'Smith'],
+                name_2 : {
+                    first: 'Bob Marley',
+                    last: 'Willy Smith'
+                },
+                age: 32,
+                gender: 'male',
+                interests: ['music', 'skiing'],
+                bio: function() {
+                    alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+                },
+                greeting: function() {
+                    alert('Hi! I\'m ' + this.name[0] + '.');
+                    alert(`Hi! I'm ${this.name[1]}.`);
+                }
+            };
+
+            let myDataName = 'height';
+            let myDataValue = '1.75m';
+            person[myDataName] = myDataValue;
+
+            // What is "this"?
+            // The this keyword refers to the current object the code is being written inside — so in this case this is equivalent to person1//2. 
+
+            const person1 = {
+                name: 'Chris',
+                greeting: function() {
+                    alert('Hi! I\'m ' + this.name + '.');
+                }
+            }
+
+            // We can also put the variable name ("person2") instead ("this") but not cool.
+            const person2 = {
+                name: 'Deepti',
+                greeting: function() {
+                    alert('Hi! I\'m ' + person2.name + '.');
+                }
+            }
+
+        </script>
+</html>

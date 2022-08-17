@@ -1,0 +1,783 @@
+﻿<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=380">
+        <title>To do list with Notifications</title>
+        <!-- Icon originated from design by Sabine Wollender: http://thenounproject.com/wosamo/ -->
+        <link rel="icon" type="image/png" href="img/icon-128.png">
+        <link href='https://fonts.googleapis.com/css?family=Donegal+One|Lily+Script+One' rel='stylesheet' type='text/css'>
+        <link href="style/style.css" type="text/css" rel="stylesheet">
+        <style>
+            /* || basic set up + sizing for containers */
+
+            html, body {
+            margin: 0;
+            }
+
+            html {
+                width: 100%;
+                height: 100%;
+                font-size: 10px;
+                font-family: 'Donegal One', serif;
+                background: #333335de;
+            }
+
+            body {
+                width: 50rem;
+                position: relative;
+                background: #00ff1565;
+                margin: 0 auto;
+                border-left: 2px solid #FF6400;
+                border-right: 2px solid #FF6400;
+            }
+
+            h1, h2 {
+                text-align: center;
+                background: #FF6400;
+                font-family: 'Lily Script One', cursive;
+            }
+
+            h1 {
+                font-size: 6rem;
+                margin: 0;
+                background: -webkit-linear-gradient(top, #FF9640, #FF6400);
+                background: -moz-linear-gradient(top, #FF9640, #FF6400);
+                background: -ms-linear-gradient(top, #FF9640, #FF6400);
+                background: linear-gradient(top, #FF9640, #FF6400);
+                text-shadow: 1px 1px 1px #FF6400, 2px 2px 1px black;
+            }
+
+            h2 {
+                font-size: 2.4rem;
+            }
+
+            /* || bottom toolbar styling  */
+
+            #toolbar {
+                position: relative;
+                height: 6rem;
+                width: 100%;
+                background: #FF6400;
+                border-top: 2px solid #FF6400;
+                border-bottom: 2px solid #FF6400;
+            }
+
+            #enable, input[type="submit"] {
+                line-height: 1.8;
+                font-size: 1.3rem;
+                border-radius: 5px;
+                border: 1px solid black;
+                color: black;
+                text-shadow: 1px 1px 1px black;
+                border: 1px solid rgba(0,0,0,0.1);
+                box-shadow: inset 0px 5px 3px rgba(255,255,255,0.2),
+                            inset 0px -5px 3px rgba(0,0,0,0.2);
+            }
+
+            #enable {
+                position: absolute;
+                bottom: 0.3rem;
+                right: 0.3rem;
+            }
+
+            #notifications {
+                margin: 0;
+                position: relative;
+                padding: 0.3rem;
+                background: #FFEE00;
+                position: absolute;
+                top: 0rem;
+                left: 0rem;
+                height: 5.4rem;
+                width: 50%;
+                overflow: auto;
+                line-height: 1.2;
+            }
+
+            #notifications li {
+                margin-left: 1.5rem;
+            }
+
+            /* || new item form styling */
+
+            .form-box {
+                background: #FF6400;
+                width: 85%;
+                padding: 1rem;
+                margin: 2rem auto;
+                box-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            }
+
+            form div {
+                margin-bottom: 1rem;
+            }
+
+            form .full-width {
+                margin: 1rem auto 2rem;
+                width: 100%;
+            }
+
+            form .half-width {
+                width: 50%;
+                float: left;
+            }
+
+            form .third-width {
+                width: 33%;
+                float: left;
+            }
+
+
+            form div label {
+                width: 10rem;
+                float: left;
+                padding-right: 1rem;
+                font-size: 1.6rem;
+                line-height: 1.6;
+            }
+
+            form .full-width input {
+                width: 30rem;
+            }
+
+            form .half-width input {
+                width: 8.75rem;
+            }
+
+            form .third-width select {
+                width: 13.5rem;
+            }
+
+            form div input[type="submit"] {
+                clear: both;
+                width: 20rem;
+                display: block;
+                height: 3rem;
+                margin: 0 auto;
+                position: relative;
+                top: 0.5rem;
+            }
+
+            /* || tasks box */
+
+            .task-box {
+                width: 85%;
+                padding: 1rem;
+                margin: 2rem auto;
+                font-size: 1.8rem;
+            }
+
+            .task-box ul {
+            margin: 0;
+            padding: 0;
+            }
+
+            .task-box li {
+                list-style-type: none;
+                padding: 1rem;
+                border-bottom: 2px solid #FF6400;
+            }
+
+            .task-box li:last-child {
+                border-bottom: none;
+            }
+
+            .task-box li:last-child {
+                margin-bottom: 0rem;
+            }
+
+            .task-box button {
+                margin-left: 2rem;
+                font-size: 1.6rem;
+                border: 1px solid #eee;
+                border-radius: 5px;
+                box-shadow: inset 0 -2px 5px rgba(0,0,0,0.5);
+                            /* inset 1px 1px 1px black; */
+            }
+
+            /* setting cursor for interactive controls */
+
+            button, input[type="submit"], select {
+                cursor: pointer;
+            }
+
+            /* media query for small screens */
+
+            @media (max-width: 32rem) {
+            body {
+                width: 100%;
+                border-left: none;
+                border-right: none;
+            }
+
+            form div {
+                clear: both;
+            }
+
+            form .full-width {
+                margin: 1rem auto;
+            }
+
+            form .half-width {
+                width: 100%;
+                float: none;
+            }
+
+            form .third-width {
+                width: 100%;
+                float: none;
+            }
+
+            form div label {
+                width: 36%;
+                padding-left: 1rem;
+            }
+
+            form input, form select, form label {
+                line-height: 2.5rem;
+                font-size: 2rem;
+            }
+
+            form .full-width input {
+                width: 50%;
+            }
+
+            form .half-width input {
+                width: 50%;
+            }
+
+            form .third-width select {
+                width: 50%;
+            }
+
+            #enable {
+                right: 1rem;
+            }
+
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>To do list with notification if anabled</h1>
+
+        <div class="task-box">
+
+            <ul id="task-list">
+
+        </div>
+
+        </ul>
+
+        <div class="form-box">
+            <h2>Add new to do.</h2>
+
+            <form id="task-form" action="index.html">
+                <div class="full-width"><label for="title">Task title:</label><input type="text" id="title" required></div>
+                <div class="half-width"><label for="deadline-hours">Hours (hh):</label><input type="number" id="deadline-hours" required></div>
+                <div class="half-width"><label for="deadline-minutes">Mins (mm):</label><input type="number" id="deadline-minutes" required></div>
+                <div class="third-width"><label for="deadline-day">Day:</label>
+                    <select id="deadline-day" required>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                </div>
+
+                <div class="third-width"><label for="deadline-month">Month:</label>
+                    <select id="deadline-month" required>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                </div>
+
+                <div class="third-width"><label for="deadline-year">Year:</label>
+                    <select id="deadline-year" required>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </div>
+
+                <div><input type="submit" id="submit" value="Add Task"></div>
+                <div></div>
+            </form>
+        </div>
+
+        <div id="toolbar">
+            <ul id="notifications">
+
+            </ul>
+
+            <button id="enable">
+                Enable notifications!!
+            </button>
+        </div>
+
+    </body>
+
+    <script>
+        // create a reference to the notifications list in the bottom of the app; we will write database messages into this list by
+        //appending list items on to the inner HTML of this variable - this is all the lines that say note.innerHTML += '<li>foo</li>';
+        const note = document.getElementById('notifications');
+
+        // create an instance of a db object for us to store the IDB data in
+        let db;
+
+        // create a blank instance of the object that is used to transfer data into the IDB. This is mainly for reference
+        let newItem = [
+            { taskTitle: "", hours: 0, minutes: 0, day: 0, month: "", year: 0, notified: "no" }
+            ];
+
+        // all the variables we need for the app
+        const taskList = document.getElementById('task-list');
+
+        const taskForm = document.getElementById('task-form');
+        const title = document.getElementById('title');
+
+        const hours = document.getElementById('deadline-hours');
+        const minutes = document.getElementById('deadline-minutes');
+        const day = document.getElementById('deadline-day');
+        const month = document.getElementById('deadline-month');
+        const year = document.getElementById('deadline-year');
+
+        const submit = document.getElementById('submit');
+
+        const notificationBtn = document.getElementById('enable');
+
+        // Do an initial check to see what the notification permission state is
+
+        if(Notification.permission === 'denied' || Notification.permission === 'default') {
+            notificationBtn.style.display = 'block';
+        } else {
+            notificationBtn.style.display = 'none';
+        }
+
+        window.onload = function() {
+            note.innerHTML += '<li>App initialised.</li>';
+            // In the following line, you should include the prefixes of implementations you want to test.
+            window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+            // DON'T use "var indexedDB = ..." if you're not in a function.
+            // Moreover, you may need references to some window.IDB* objects:
+            window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+            window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+            // (Mozilla has never prefixed these objects, so we don't need window.mozIDB*)
+
+            // Let us open our database
+            const DBOpenRequest = window.indexedDB.open("toDoList", 4);
+
+            // Gecko-only IndexedDB temp storage option:
+            // var request = window.indexedDB.open("toDoList", {version: 4, storage: "temporary"});
+
+            // these two event handlers act on the database being opened successfully, or not
+            DBOpenRequest.onerror = function(event) {
+                note.innerHTML += '<li>Error loading database.</li>';
+            };
+
+            DBOpenRequest.onsuccess = function(event) {
+                note.innerHTML += '<li>Database initialised.</li>';
+
+                // store the result of opening the database in the db variable. This is used a lot below
+                db = DBOpenRequest.result;
+
+                // Run the displayData() function to populate the task list with all the to-do list data already in the IDB
+                displayData();
+            };
+
+            // This event handles the event whereby a new version of the database needs to be created
+            // Either one has not been created before, or a new version number has been submitted via the
+            // window.indexedDB.open line above
+            //it is only implemented in recent browsers
+            DBOpenRequest.onupgradeneeded = function(event) {
+                let db = event.target.result;
+
+                db.onerror = function(event) {
+                    note.innerHTML += '<li>Error loading database.</li>';
+                };
+
+                // Create an objectStore for this database
+
+                let objectStore = db.createObjectStore("toDoList", { keyPath: "taskTitle" });
+
+                // define what data items the objectStore will contain
+
+                objectStore.createIndex("hours", "hours", { unique: false });
+                objectStore.createIndex("minutes", "minutes", { unique: false });
+                objectStore.createIndex("day", "day", { unique: false });
+                objectStore.createIndex("month", "month", { unique: false });
+                objectStore.createIndex("year", "year", { unique: false });
+
+                objectStore.createIndex("notified", "notified", { unique: false });
+
+                note.innerHTML += '<li>Object store created.</li>';
+            };
+
+            function displayData() {
+                // first clear the content of the task list so that you don't get a huge long list of duplicate stuff each time
+                //the display is updated.
+                taskList.innerHTML = "";
+
+                // Open our object store and then get a cursor list of all the different data items in the IDB to iterate through
+                let objectStore = db.transaction('toDoList').objectStore('toDoList');
+                objectStore.openCursor().onsuccess = function(event) {
+                    let cursor = event.target.result;
+                    // if there is still another cursor to go, keep runing this code
+                    if(cursor) {
+                        // create a list item to put each data item inside when displaying it
+                        const listItem = document.createElement('li');
+
+                        // check which suffix the deadline day of the month needs
+                        if(cursor.value.day == 1 || cursor.value.day == 21 || cursor.value.day == 31) {
+                            daySuffix = "st";
+                        } else if(cursor.value.day == 2 || cursor.value.day == 22) {
+                            daySuffix = "nd";
+                        } else if(cursor.value.day == 3 || cursor.value.day == 23) {
+                            daySuffix = "rd";
+                        } else {
+                            daySuffix = "th";
+                        }
+
+                        // build the to-do list entry and put it into the list item via innerHTML.
+                        listItem.innerHTML = cursor.value.taskTitle + ' — ' + cursor.value.hours + ':' + cursor.value.minutes + ', ' + cursor.value.month + ' ' + cursor.value.day + daySuffix + ' ' + cursor.value.year + '.';
+
+                        if(cursor.value.notified == "yes") {
+                            listItem.style.textDecoration = "line-through";
+                            listItem.style.color = "rgba(255,0,0,0.5)";
+                        }
+
+                        // put the item item inside the task list
+                        taskList.appendChild(listItem);
+
+                        // create a delete button inside each list item, giving it an event handler so that it runs the deleteButton()
+                        // function when clicked
+                        const deleteButton = document.createElement('button');
+                        listItem.appendChild(deleteButton);
+                        deleteButton.innerHTML = 'delete';
+                        // here we are setting a data attribute on our delete button to say what task we want deleted if it is clicked!
+                        deleteButton.setAttribute('data-task', cursor.value.taskTitle);
+                        deleteButton.onclick = function(event) {
+                            deleteItem(event);
+                        }
+
+                        // continue on to the next item in the cursor
+                        cursor.continue();
+
+                        // if there are no more cursor items to iterate through, say so, and exit the function
+                    } else {
+                        note.innerHTML += '<li>Entries all displayed.</li>';
+                    }
+                }
+            }
+
+            // give the form submit button an event listener so that when the form is submitted the addData() function is run
+            taskForm.addEventListener('submit',addData,false);
+
+            function addData(e) {
+                // prevent default - we don't want the form to submit in the conventional way
+                e.preventDefault();
+
+                // Stop the form submitting if any values are left empty. This is just for browsers that don't support the HTML5 form
+                // required attributes
+                if(title.value == '' || hours.value == null || minutes.value == null || day.value == '' || month.value == '' || year.value == null) {
+                    note.innerHTML += '<li>Data not submitted — form incomplete.</li>';
+                    return;
+                } else {
+
+                    // grab the values entered into the form fields and store them in an object ready for being inserted into the IDB
+                    let newItem = [
+                        { taskTitle: title.value, hours: hours.value, minutes: minutes.value, day: day.value, month: month.value, year: year.value, notified: "no" }
+                    ];
+
+                    // open a read/write db transaction, ready for adding the data
+                    let transaction = db.transaction(["toDoList"], "readwrite");
+
+                    // report on the success of the transaction completing, when everything is done
+                    transaction.oncomplete = function() {
+                        note.innerHTML += '<li>Transaction completed: database modification finished.</li>';
+
+                        // update the display of data to show the newly added item, by running displayData() again.
+                        displayData();
+                    };
+
+                    transaction.onerror = function() {
+                        note.innerHTML += '<li>Transaction not opened due to error: ' + transaction.error + '</li>';
+                    };
+
+                    // call an object store that's already been added to the database
+                    let objectStore = transaction.objectStore("toDoList");
+                    console.log(objectStore.indexNames);
+                    console.log(objectStore.keyPath);
+                    console.log(objectStore.name);
+                    console.log(objectStore.transaction);
+                    console.log(objectStore.autoIncrement);
+
+                    // Make a request to add our newItem object to the object store
+                    let objectStoreRequest = objectStore.add(newItem[0]);
+                    objectStoreRequest.onsuccess = function(event) {
+
+                        // report the success of our request
+                        // (to detect whether it has been succesfully
+                        // added to the database, you'd look at transaction.oncomplete)
+                        note.innerHTML += '<li>Request successful.</li>';
+
+                        // clear the form, ready for adding the next entry
+                        title.value = '';
+                        hours.value = null;
+                        minutes.value = null;
+                        day.value = 01;
+                        month.value = 'January';
+                        year.value = 2020;
+
+                    };
+
+                };
+
+            };
+
+            function deleteItem(event) {
+                // retrieve the name of the task we want to delete
+                let dataTask = event.target.getAttribute('data-task');
+
+                // open a database transaction and delete the task, finding it by the name we retrieved above
+                let transaction = db.transaction(["toDoList"], "readwrite");
+                let request = transaction.objectStore("toDoList").delete(dataTask);
+
+                // report that the data item has been deleted
+                transaction.oncomplete = function() {
+                    // delete the parent of the button, which is the list item, so it no longer is displayed
+                    event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+                    note.innerHTML += '<li>Task \"' + dataTask + '\" deleted.</li>';
+                };
+            };
+
+            // this function checks whether the deadline for each task is up or not, and responds appropriately
+            function checkDeadlines() {
+                // First of all check whether notifications are enabled or denied
+                if(Notification.permission === 'denied' || Notification.permission === 'default') {
+                    notificationBtn.style.display = 'block';
+                } else {
+                    notificationBtn.style.display = 'none';
+                }
+
+                // grab the time and date right now
+                const now = new Date();
+
+                // from the now variable, store the current minutes, hours, day of the month (getDate is needed for this, as getDay
+                // returns the day of the week, 1-7), month, year (getFullYear needed; getYear is deprecated, and returns a weird value
+                // that is not much use to anyone!) and seconds
+                const minuteCheck = now.getMinutes();
+                const hourCheck = now.getHours();
+                const dayCheck = now.getDate();
+                const monthCheck = now.getMonth();
+                const yearCheck = now.getFullYear();
+
+                // again, open a transaction then a cursor to iterate through all the data items in the IDB
+                let objectStore = db.transaction(['toDoList'], "readwrite").objectStore('toDoList');
+                objectStore.openCursor().onsuccess = function(event) {
+                    let cursor = event.target.result;
+                    if(cursor) {
+
+                        // convert the month names we have installed in the IDB into a month number that JavaScript will understand.
+                        // The JavaScript date object creates month values as a number between 0 and 11.
+                        switch(cursor.value.month) {
+                            case "January":
+                                var monthNumber = 0;
+                                break;
+                            case "February":
+                                var monthNumber = 1;
+                                break;
+                            case "March":
+                                var monthNumber = 2;
+                                break;
+                            case "April":
+                                var monthNumber = 3;
+                                break;
+                            case "May":
+                                var monthNumber = 4;
+                                break;
+                            case "June":
+                                var monthNumber = 5;
+                                break;
+                            case "July":
+                                var monthNumber = 6;
+                                break;
+                            case "August":
+                                var monthNumber = 7;
+                                break;
+                            case "September":
+                                var monthNumber = 8;
+                                break;
+                            case "October":
+                                var monthNumber = 9;
+                                break;
+                            case "November":
+                                var monthNumber = 10;
+                                break;
+                            case "December":
+                                var monthNumber = 11;
+                                break;
+                            default:
+                            alert('Incorrect month entered in database.');
+                        }
+                        // check if the current hours, minutes, day, month and year values match the stored values for each task in the IDB.
+                        // The + operator in this case converts numbers with leading zeros into their non leading zero equivalents, so e.g.
+                        // 09 -> 9. This is needed because JS date number values never have leading zeros, but our data might.
+                        // The secondsCheck = 0 check is so that you don't get duplicate notifications for the same task. The notification
+                        // will only appear when the seconds is 0, meaning that you won't get more than one notification for each task
+                        if(+(cursor.value.hours) == hourCheck && +(cursor.value.minutes) == minuteCheck && +(cursor.value.day) == dayCheck && monthNumber == monthCheck && cursor.value.year == yearCheck && cursor.value.notified == "no") {
+
+                            // If the numbers all do match, run the createNotification() function to create a system notification
+                            // but only if the permission is set
+
+                            if(Notification.permission === 'granted') {
+                                createNotification(cursor.value.taskTitle);
+                            }
+                        }
+
+                        // move on and perform the same deadline check on the next cursor item
+                        cursor.continue();
+                    }
+
+                }
+
+            }
+
+
+            // askNotificationPermission function to ask for permission when the "Enable notifications" button is clicked
+
+            function askNotificationPermission() {
+                // function to actually ask the permissions
+                function handlePermission(permission) {
+                    // Whatever the user answers, we make sure Chrome stores the information
+                    if(!('permission' in Notification)) {
+                        Notification.permission = permission;
+                    }
+
+                    // set the button to shown or hidden, depending on what the user answers
+                    if(Notification.permission === 'denied' || Notification.permission === 'default') {
+                        notificationBtn.style.display = 'block';
+                    } else {
+                        notificationBtn.style.display = 'none';
+                    }
+                }
+
+                // Let's check if the browser supports notifications
+                if (!"Notification" in window) {
+                    console.log("This browser does not support notifications.");
+                } else {
+                    if(checkNotificationPromise()) {
+                        Notification.requestPermission()
+                        .then((permission) => {
+                            handlePermission(permission);
+                        })
+                    } else {
+                        Notification.requestPermission(function(permission) {
+                            handlePermission(permission);
+                        });
+                    }
+                }
+            }
+
+            // Function to check whether browser supports the promise version of requestPermission()
+            // Safari only supports the old callback-based version
+            function checkNotificationPromise() {
+                try {
+                    Notification.requestPermission().then();
+                } catch(e) {
+                    return false;
+                }
+
+                return true;
+            }
+
+            // wire up notification permission functionality to "Enable notifications" button
+
+            notificationBtn.addEventListener('click', askNotificationPermission);
+
+
+
+            // function for creating the notification
+            function createNotification(title) {
+
+                // Create and show the notification
+                // let img = '/to-do-notifications/img/icon-128.png';
+                let img = 'images/icon-128.png';
+                let text = 'HEY! Your task "' + title + '" is now overdue.';
+                let notification = new Notification('To do list', { body: text, icon: img });
+
+                // we need to update the value of notified to "yes" in this particular data object, so the
+                // notification won't be set off on it again
+
+                // first open up a transaction as usual
+                let objectStore = db.transaction(['toDoList'], "readwrite").objectStore('toDoList');
+
+                // get the to-do list object that has this title as it's title
+                let objectStoreTitleRequest = objectStore.get(title);
+
+                objectStoreTitleRequest.onsuccess = function() {
+                    // grab the data object returned as the result
+                    let data = objectStoreTitleRequest.result;
+
+                    // update the notified value in the object to "yes"
+                    data.notified = "yes";
+
+                    // create another request that inserts the item back into the database
+                    let updateTitleRequest = objectStore.put(data);
+
+                    // when this new request succeeds, run the displayData() function again to update the display
+                    updateTitleRequest.onsuccess = function() {
+                        displayData();
+                    }
+                }
+            }
+
+            // using a setInterval to run the checkDeadlines() function every second
+            setInterval(checkDeadlines, 1000);
+        }
+    </script>
+
+</html>
