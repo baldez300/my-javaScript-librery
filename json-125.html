@@ -1,0 +1,72 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <style>
+            body {
+                background: 0 -100px repeat-x url(images/bg_gallery.png) #4F191A;
+                margin: 10px;
+            }
+            
+            img {
+                display: none;
+            }
+            
+            table {
+                margin: 0 auto;
+            }
+            
+            td {
+                padding: 15px;
+            }
+        </style>
+        <script>
+            function draw() {
+
+                // Loop through all images
+                for (var i = 0; i < document.images.length; i++) {
+            
+                    // Don't add a canvas for the frame image
+                    if (document.images[i].getAttribute('id') != 'frame') {
+                
+                        // Create canvas element
+                        canvas = document.createElement('canvas');
+                        canvas.setAttribute('width', 232);
+                        canvas.setAttribute('height', 250);
+                
+                        // Insert before the image
+                        document.images[i].parentNode.insertBefore(canvas,document.images[i]);
+                
+                        ctx = canvas.getContext('2d');
+                        
+                        // Add frame
+                        ctx.drawImage(document.getElementById('frame'), 0, 0);
+                
+                        // Draw image to canvas
+                        ctx.drawImage(document.images[i], 15, 20);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <table>
+            <tr>
+              <td><img src="images/gallery_1.jpg"></td>
+              <td><img src="images/gallery_2.jpg"></td>
+              <td><img src="images/gallery_3.jpg"></td>
+              <td><img src="images/gallery_4.jpg"></td>
+            </tr>
+            <tr>
+              <td><img src="images/gallery_5.jpg"></td>
+              <td><img src="images/gallery_6.jpg"></td>
+              <td><img src="images/gallery_7.jpg"></td>
+              <td><img src="images/gallery_8.jpg"></td>
+            </tr>
+           </table>
+           <img id="frame" src="images/canvas_picture_frame.png" width="232" height="250">
+        </body>
+</html>

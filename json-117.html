@@ -1,0 +1,24 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let canvas = document.getElementById('canvas');
+                let ctx = canvas.getContext('2d');
+
+                ctx.font = '48px serif';
+                ctx.fillText('Hi!', 150, 50);
+                ctx.direction = 'rtl';
+                ctx.fillText('Hi!', 150, 130);
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"></canvas>
+    </body>
+</html>

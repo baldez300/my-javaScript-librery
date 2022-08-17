@@ -1,0 +1,25 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let img = new Image();
+                img.src = 'images/rhino2.jpg';
+                img.onload = function() {
+                    ctx.imageSmoothingQuality = 'low';
+                    ctx.drawImage(img, 0, 0, 300, 150);
+                };
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"></canvas>
+    </body>
+</html>

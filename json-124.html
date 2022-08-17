@@ -1,0 +1,30 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+
+                // Draw frame
+                ctx.drawImage(document.getElementById('frame'), 0, 0);
+
+                // Draw slice
+                ctx.drawImage(document.getElementById('source'),
+                                33, 71, 104, 124, 13.5, 10, 90, 104);
+
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <div style="display:none;">
+            <img id="source" src="images/rhino.jpg" width="300" height="227">
+            <img id="frame" src="images/canvas_picture_frame.png" width="32" height="50">
+        </div>
+    </body>
+</html>

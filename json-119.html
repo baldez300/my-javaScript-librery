@@ -1,0 +1,40 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            // With the context in hand, you can draw anything you like. This code draws a house.
+            function draw() {
+                const canvas = document.getElementById('my-house');
+                const ctx = canvas.getContext('2d');
+
+                // Set line width
+                ctx.lineWidth = 10;
+                // Color
+                ctx.strokeStyle = 'gray';
+
+                // Wall
+                ctx.strokeRect(75, 140, 150, 110);
+
+                // Door
+                ctx.fillRect(130, 190, 40, 60);
+
+                // Roof
+                ctx.beginPath();
+                ctx.moveTo(50, 140);
+                ctx.lineTo(150, 60);
+                ctx.lineTo(250, 140);
+                ctx.closePath();
+                ctx.stroke();
+
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="my-house" width="300" height="300"></canvas>
+    </body>
+</html>

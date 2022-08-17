@@ -1,0 +1,33 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let canvas = document.getElementById('canvas');
+                let ctx = canvas.getContext('2d');
+
+                // Create a linear gradient
+                // The start gradient point is at x=20, y=0
+                // The end gradient point is at x=220, y=0
+                let gradient = ctx.createLinearGradient(20,0, 220,0);
+
+                // Add three color stops
+                gradient.addColorStop(0, 'green');
+                gradient.addColorStop(.5, 'red');
+                gradient.addColorStop(1, 'cyan');
+
+                // Set the fill style and draw a rectangle
+                ctx.fillStyle = gradient;
+                ctx.fillRect(20, 20, 200, 100);
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"></canvas>
+    </body>
+</html>

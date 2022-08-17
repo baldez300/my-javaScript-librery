@@ -1,0 +1,32 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let ctx = document.getElementById('canvas').getContext('2d');
+
+                let sin = Math.sin(Math.PI / 6);
+                let cos = Math.cos(Math.PI / 6);
+                ctx.translate(100, 100);
+                let c = 0;
+                for (let i = 0; i <= 12; i++) {
+                    c = Math.floor(255 / 12 * i);
+                    ctx.fillStyle = 'rgb(' + c + ', ' + c + ', ' + c + ')';
+                    ctx.fillRect(0, 0, 100, 10);
+                    ctx.transform(cos, sin, -sin, cos, 0, 0);
+                }
+
+                ctx.setTransform(-1, 0, 0, 1, 100, 100);
+                ctx.fillStyle = 'rgba(255, 128, 255, 0.5)';
+                ctx.fillRect(0, 50, 100, 100);
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"width="360" height="310"></canvas>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+                const image = document.getElementById('source');
+
+                // The source image is taken from the coordinates (33, 71), with a width of 104 and a height of 124. 
+                // It is drawn to the canvas at (21, 20), where it is given a width of 87 and a height of 104.
+                image.addEventListener('load', e => {
+                    ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
+                });
+                image.src = 'images/rhino.jpg';
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"></canvas>
+        <div style="display:none;">
+            <img id="source">
+        </div>
+    </body>
+</html>

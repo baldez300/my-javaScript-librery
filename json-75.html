@@ -1,0 +1,128 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>Our superheroes</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+
+        <style>
+
+            /* || general styles */
+
+            html {
+                font-family: 'helvetica neue', helvetica, arial, sans-serif;
+                background-color: gray;
+            }
+
+            body {
+                width: 800px;
+                margin: 0 auto;
+            }
+
+            h1, h2 {
+                font-family: 'Faster One', cursive;
+            }
+
+            /* header styles */
+
+            h1 {
+                font-size: 4rem;
+                text-align: center;
+            }
+
+            header p {
+                font-size: 1.3rem;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            /* section styles */
+
+            section article {
+                width: 33%;
+                float: left;
+            }
+
+            section p {
+                margin: 5px 0;
+            }
+
+            section ul {
+                margin-top: 0;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+                letter-spacing: -5px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header>
+
+        </header>
+
+        <section>
+
+        </section>
+
+        <script>
+            // JSON cat data getted ==========================!
+
+            const section = document.querySelector('section');
+
+            let para1 = document.createElement('p');
+            let para2 = document.createElement('p');
+
+            let motherInfo = 'The mother cats are called ';
+            let kittenInfo;
+
+            fetch('sample.json')
+            .then(response => response.text())
+            .then(text => displayCatInfo(text))
+
+            function displayCatInfo(catString) {
+                let total = 0;
+                let male = 0;
+
+                // Add your code here
+                let cats = JSON.parse(catString);
+
+                for(let i = 0; i < cats.length; i++) {
+
+                    for(let j = 0; j < cats[i].kittens.length; j++){
+                        total++;
+
+                        if(cats[i].kittens[j].gender === 'm') {
+                            male++;
+                        }
+                    }
+
+                    if(i < (cats.length - 1)) {
+                        motherInfo += `${cats[i].name} , `;
+                    } else {
+                        motherInfo += `and ${cats[i].name} .`;
+                    }
+                }
+
+                kittenInfo = `There are ${ total } kittens in total, ${ male } males and ${ total - male } females.`;
+                
+            
+                // Don't edit the code below here!
+
+                para1.textContent = motherInfo;
+                para2.textContent = kittenInfo;
+            }
+
+            section.appendChild(para1);
+            section.appendChild(para2);
+        </script>
+    </body>
+</html>

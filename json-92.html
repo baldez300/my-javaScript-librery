@@ -1,0 +1,30 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let ctx = document.getElementById('canvas').getContext('2d');
+                let lineJoin = ['round', 'bevel', 'miter'];
+                ctx.lineWidth = 10;
+                for (let i = 0; i < lineJoin.length; i++) {
+                    ctx.lineJoin = lineJoin[i];
+                    ctx.beginPath();
+                    ctx.moveTo(-5, 5 + i * 40);
+                    ctx.lineTo(35, 45 + i * 40);
+                    ctx.lineTo(75, 5 + i * 40);
+                    ctx.lineTo(115, 45 + i * 40);
+                    ctx.lineTo(155, 5 + i * 40);
+                    ctx.stroke();
+                }
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="150" height="150"></canvas>
+    </body>
+</html>

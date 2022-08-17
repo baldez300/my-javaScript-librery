@@ -1,0 +1,24 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            // For this you will obtain the measurement result in "DevTool console".
+            function draw() {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let text = ctx.measureText('Hello world and Balde');
+                console.log(text.width);  // 56;
+
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"></canvas>
+    </body>
+</html>

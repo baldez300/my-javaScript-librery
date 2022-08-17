@@ -1,0 +1,21 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let p = new Path2D('M10 10 h 80 v 80 h -80 Z');
+                ctx.fill(p);
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="150" height="150"></canvas>
+    </body>
+</html>

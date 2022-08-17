@@ -1,0 +1,39 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let ctx = document.getElementById('canvas').getContext('2d');
+                let lineCap = ['butt', 'round', 'square'];
+
+                // Draw guides
+                ctx.strokeStyle = '#09f';
+                ctx.beginPath();
+                ctx.moveTo(10, 10);
+                ctx.lineTo(140, 10);
+                ctx.moveTo(10, 140);
+                ctx.lineTo(140, 140);
+                ctx.stroke();
+
+                // Draw lines
+                ctx.strokeStyle = 'orange';
+                for (let i = 0; i < lineCap.length; i++) {
+                    ctx.lineWidth = 15;
+                    ctx.lineCap = lineCap[i];
+                    ctx.beginPath();
+                    ctx.moveTo(25 + i * 50, 10);
+                    ctx.lineTo(25 + i * 50, 140);
+                    ctx.stroke();
+                }
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="150" height="150"></canvas>
+    </body>
+</html>

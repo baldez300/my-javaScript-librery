@@ -1,0 +1,23 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let ctx = document.getElementById('canvas').getContext('2d');
+
+                ctx.beginPath();
+                ctx.arc(50, 50, 30, 0, Math.PI * 2, true);
+                ctx.arc(50, 50, 15, 0, Math.PI * 2, true);
+                ctx.fill('evenodd');
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"></canvas>
+    </body>
+</html>

@@ -1,0 +1,70 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Canvas tutorial</title>
+        <script type="application/javascript">
+            function draw() {
+                let canvas = document.getElementById('canvas');
+                if (canvas.getContext) {
+                    let ctx = canvas.getContext('2d');
+
+                    // They draw 2 squares with different colors.
+                    // ctx.fillStyle = 'rgb(200, 0, 0)';
+                    // ctx.fillRect(10, 10, 50, 50);
+
+                    // ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+                    // ctx.fillRect(30, 30, 50, 50);
+
+                    // They draw 1 square surrounded by a black big square 100px.
+                    // ctx.fillRect(25, 25, 100, 100);
+                    // ctx.clearRect(45, 45, 60, 60);
+                    // ctx.strokeRect(50, 50, 50, 50);
+
+                    // Drawing a triangle.
+                    // ctx.beginPath();
+                    // ctx.moveTo(75, 50);
+                    // ctx.lineTo(100, 75);
+                    // ctx.lineTo(100, 25);
+                    // ctx.fill();
+
+                    // Moving the pen.
+                    // If you'd like to see the connecting lines, you can remove the lines that call moveTo().
+                    // ctx.beginPath();
+                    // ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+                    // ctx.moveTo(110, 75);
+                    // ctx.arc(75, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
+                    // ctx.moveTo(65, 65);
+                    // ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
+                    // ctx.moveTo(95, 65);
+                    // ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
+                    // ctx.stroke();
+
+                    // The example below draws two triangles, one filled and one outlined.
+                    // Filled triangle
+                    ctx.beginPath();
+                    ctx.moveTo(25, 25);
+                    ctx.lineTo(105, 25);
+                    ctx.lineTo(25, 105);
+                    ctx.fill();
+
+                    // Stroked triangle
+                    ctx.beginPath();
+                    ctx.moveTo(125, 125);
+                    ctx.lineTo(125, 45);
+                    ctx.lineTo(45, 125);
+                    ctx.closePath();
+                    ctx.stroke();
+                }
+            }
+        </script>
+        <!-- <style type="text/css">
+            canvas { border: 1px solid black; }
+        </style> -->
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="150" height="150"></canvas>
+    </body>
+</html>

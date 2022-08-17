@@ -1,0 +1,906 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript label example</title>
+    <style>
+        html {
+            background-color: #ddd0b8;
+        }
+        p {
+            font-family: 'helvetica neue', helvetica, sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            border: 2px solid rgba(0,0,200,0.6);
+            background: rgba(0,0,200,0.3);
+            color: rgba(0,0,200,0.6);
+            box-shadow: 1px 1px 2px rgba(0,0,200,0.4);
+            border-radius: 10px;
+            padding: 3px 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <p>Player 1: Baldez</p>
+
+    <script>
+      const para = document.querySelector('p');
+
+      para.addEventListener('click', updateName);
+
+      function updateName() {
+        let name = prompt('Enter a new name');
+        para.textContent = 'Player 1: ' + name;
+      }
+    </script>
+
+        <hr>
+        <h2>Navigate to <a href="index-1.html">index-1. JS: Internal JavaScript.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="number-guessing-game-start-2.html">index-2. JS: Number of Guessing Game.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="number-game-errors-3.html">index-3. JS: An erroneous example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="number-game-errors-4.html">index-4. JS: Variables 1...</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="numbers-5.html">numbers-5. JS: Increment and decrement operators</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="numbers-6.html">numbers-6. JS: Conditional statements.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="numbers-7.html">numbers-7. JS: Math 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="numbers-8.html">numbers-8. JS: Math 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="numbers-9.html">numbers-9. JS: Math 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="strings-10.html">strings-10. JS: Strings 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="strings-11.html">strings-11. JS: Strings 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="strings-12.html">strings-12. JS: Strings 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="strings-13.html">strings-13. JS: Strings 4.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="arrays-14.html">arrays-14. JS: Printing those products!</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="arrays-15.html">arrays-15. JS: Top 5 searches.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="arrays-16.html">arrays-16. JS: Arrays 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="arrays-17.html">arrays-17. JS: Arrays 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="arrays-18.html">arrays-18. JS: Silly story generator.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-19.html">conditions-19. JS: Conditions.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-20.html">conditions-20. JS: Conditions ||.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-21.html">conditions-21. JS: Ternary operator example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-22.html">conditions-22. JS: A simple calendar.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-23.html">conditions-23. JS: More color choices!</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-24.html">conditions-24. JS: Conditionals 1!</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-25.html">conditions-25. JS: Conditionals 2!</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-26.html">conditions-26. JS: Conditionals 3!</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="conditions-27.html">conditions-27. JS: Conditionals 4!</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-28.html">loops-28. JS: Loops</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-29.html">loops-29. JS: Exiting loops with break.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-30.html">loops-30. JS: Skipping iterations with continue.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-31.html">loops-31. JS: while loops.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-32.html">loops-32. JS: do...while loops.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-33.html">loops-33. JS: Launch countdown! while loops.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-34.html">loops-34. JS: Filling in a guest list! while loops.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-35.html">loops-35. JS: for statement loops.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-36.html">loops-36. JS: Loops 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-37.html">loops-37. JS: Loops 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-38.html">loops-38. JS: Loops 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="functions-39.html">functions-39. JS: Random canvas circles.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="functions-40.html">functions-40. JS: Playing with scope.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="functions-41.html">functions-41. JS: Functions 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="functions-42.html">functions-42. JS: Functions 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="functions-43.html">functions-43. JS: Functions 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="functions-44.html">functions-44. JS: Build your own function.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="functions-45.html">functions-45. JS: Return value function.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-46.html">events-46. JS: Events for changing background colors.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-47.html">events-47. JS: Different event handler properties available.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-48.html">events-48. JS: Different event handlers.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-49.html">events-49. JS: Event objects.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-50.html">events-50. JS: Event handler on multiple elements.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-51.html">events-51. JS: Preventing default behavior.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-52.html">events-52. JS: Event bubbling and capture.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-53.html">events-53. JS: Example code: event phases.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-54.html">events-54. JS: Events 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-55.html">events-55. JS: Events 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="events-56.html">events-56. JS: Events 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-57.html">objects-57. JS: Object basics 0.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-58.html">objects-58. JS: Object basics 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-59.html">objects-59. JS: Object basics 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-60.html">objects-60. JS: Object basics 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-61.html">objects-61. JS: Constructors and object instances.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-62.html">objects-62. JS: OOJS-2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-63.html">objects-63. JS: OOJS-2 reapeated.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-64.html">objects-64. JS: OOJS-A-1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-65.html">objects-65. JS: OOJS-B-2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-66.html">objects-66. JS: OOJS-C-3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-67.html">objects-67. JS: Understanding prototype objects.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-68.html">objects-68. JS: Modifying prototypes.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-69.html">objects-69. JS: Inheritance in JavaScript.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-70.html">objects-70. JS: Inheritance with class syntax.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="objects-71.html">objects-71. JS: Getters and Setters.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-72.html">json-72. JS: JSON example-1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-73.html">json-73. JS: JSON example-2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-74.html">json-74. JS: JSON example-3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-75.html">json-75. JS: JSON 1 Test your skills.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-76.html">json-76. JS: A little vanilla framework.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-77.html">json-77. JS: Let's bounce some balls.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-78.html">json-78. JS: Canvas tutorial.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-79.html">json-79. JS: The CanvasRenderingContext2D.arc() method.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-80.html">json-80. JS: Bezier and quadratic curves.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-81.html">json-81. JS: Cubic Bezier curves.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-82.html">json-82. JS: Rectangles.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-83.html">json-83. JS: Path2D example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-84.html">json-84. JS: Creating and copying paths.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-85.html">json-85. JS: Using SVG paths.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-86.html">json-86. JS: A fillStyle example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-87.html">json-87. JS: A strokeStyle example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-88.html">json-88. JS: Transparency with a globalAlpha.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-89.html">json-89. JS: Transparency with an example using rgba().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-90.html">json-90. JS: A lineWidth example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-91.html">json-91. JS: A lineCap example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-92.html">json-92. JS: A lineJoin example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-93.html">json-93. JS: A demo of the miterLimit property.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-94.html">json-94. JS: Using line dashes.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-95.html">json-95. JS: Gradients_1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-96.html">json-96. JS: Gradients_2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-97.html">json-97. JS: Gradients_3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-98.html">json-98. JS: Gradients_4.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-99.html">json-99. JS: A createLinearGradient example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-100.html">json-100. JS: A createRadialGradient example</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-101.html">json-101. JS: A createConicGradient example</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-102.html">json-102. JS: A createPattern example</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-103.html">json-103. JS: Shadows_1, shadowOffsetX = float</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-104.html">json-104. JS: Shadows_2, shadowOffsetY = float</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-105.html">json-105. JS: Shadows_3, shadowBlur = float</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-106.html">json-106. JS: Shadows_4, shadowColor = color</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-107.html">json-107. JS: A shadowed text example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-109.html">json-109. JS: A simple clipping region.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-110.html">json-110. JS: Specifying a path and a fillRule.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-111.html">json-111. JS: A fillText example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-112.html">json-112. JS: A strokeText example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-114.html">json-114. JS: General text alignment.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-115.html">json-115. JS: Direction-dependent text alignment.</a></h2>
+        
+        <hr>
+        <h2>Navigate to <a href="json-116.html">json-116. JS: Comparison of property values.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-117.html">json-117. JS: Changing text direction.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-118.html">json-118. JS: Advanced text measurements.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-119.html">json-119. JS: CanvasRenderingContext2D, a house.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-120.html">json-120. JS: Example: A simple line graph.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-121.html">json-121. JS: Example: Tiling an image.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-122.html">json-122. JS: Slicing.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-123.html">json-123. JS: Understanding source element size.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-124.html">json-124. Example: Framing an image.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-125.html">json-125. Art gallery example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-126.html">json-126. Disabling image smoothing.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-127.html">json-127. Setting image smoothing quality.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-128.html">json-128. A save and restore canvas state example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-129.html">json-129. A translate example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-130.html">json-130. A rotate example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-131.html">json-131. A Scaling example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-132.html">json-132. Example for transform and setTransform.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-133.html">json-133. Skewing a shape example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-134.html">json-134. Compositing example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-135.html">json-135. Erasing part of a canvas.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-136.html">json-136. Clipping paths example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-137.html">json-137. Alternating two colors.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-138.html">json-138. An animated solar system.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-139.html">json-139. An animated clock.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-140.html">json-140. A looping panorama.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-141.html">json-141. Mouse Following Animation.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-142.html">json-142. Snake Game.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-143.html">json-143. Drawing a ball.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-144.html">json-144. Filling a blank ImageData object.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-145.html">json-145. Using the getImageData()method to display the color under the mouse cursor.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-146.html">json-146. Grayscaling and inverting colors.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-147.html">json-147. Zooming and anti-aliasing.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-148.html">json-148. HTML5/CSS3 Horizontal Menu.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="json-149.html">json-149. Manipulating video using canvas.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="synchronous-150.html">asynchronous-150. Blocking code.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="synchronous-151.html">asynchronous-151. Simple synchronous blocking JavaScript.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="synchronous-152.html">asynchronous-152. JavaScript is single-threaded.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="synchronous-153.html">asynchronous-153. Synchronous JavaScript.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-154.html">asynchronous-154. Async callbacks.</a></h2>
+
+        <hr>
+        <h4>Navigate to <a href="synchronous-155.html">synchronous-155. Note that not all callbacks are async — some run synchronously. An example is when we use Array.prototype.forEach() to loop through the items in an array.</a></h4>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-156.html">asynchronous-156. Async Promises.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-157.html">asynchronous-157. The nature of asynchronous code.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-158.html">asynchronous-158. setTimeout() Examples.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-159.html">asynchronous-159. Clearing timeouts (Example with a button).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-160.html">asynchronous-160. setInterval() Vs. Clearing intervals Example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-161.html">asynchronous-161. Creating my own stopwatch!.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-162.html">asynchronous-162. setTimeout() and setInterval().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-163.html">asynchronous-163. setTimeout() Immediate timeouts.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-164.html">asynchronous-164. requestAnimationFrame() Including a timestamp.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-165.html">asynchronous-165. A simple bouncing ball demo using "requestAnimationFrame()".</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-166.html">asynchronous-166. Starting and stopping our spinner animation using "requestAnimationFrame()".</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-167.html">asynchronous-167. A simple reaction game demo using "requestAnimationFrame()".</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-168.html">asynchronous-168. Explaining basic promise syntax: A real example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-169.html">asynchronous-169. Running code in response to multiple promises fulfilling with Promise.all().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-170.html">asynchronous-170. Promise.prototype.finally().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-171.html">asynchronous-171. Running code in response to multiple promises fulfilling with finally().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-172.html">asynchronous-172. Using the Promise() constructor.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-173.html">asynchronous-173. Rejecting a custom promise.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-174.html">asynchronous-174. Rewriting promise code with async-await-PROMISE-catch.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-175.html">asynchronous-175. Rewriting promise code with async-await-TRY-catch.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-176.html">asynchronous-176. Running code in response to multiple promises fulfilling with Promise.all(here ASYNC/AWAIT but no to 169).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-177.html">asynchronous-177. Running code in response to multiple promises fulfilling with Promise.all(finally not used to 176).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-178.html">asynchronous-178. Handling async/await slowdown.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-179.html">asynchronous-179. Handling async/await fast.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-180.html">asynchronous-180. Async/await class methods.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-181.html">asynchronous-181. An example that loads a resource via the XMLHttpRequest API.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-182.html">asynchronous-182. setTimeout().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-183.html">asynchronous-183. setInterval() with a digital clock on the UI.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="asynchronous-184.html">asynchronous-184. requestAnimationFrame() (second time).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="api-185.html">api-185. The following simple example illustrates using the DOM Document API.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="web-storage-api-186.html">api-186. Web Storage interfaces/API.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="google-map-api-187.html">api-187. Google Map API.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="youtube-api-188.html">api-188. Youtube API.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="audio-element-189.html">api-189. The Embed Audio element.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="audio-element-190.html">api-190.  Simple web audio example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="notification-191.html">api-191.  Notification.requestPermission().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="notification-for-to-do-192.html">api-192.  Notification on your computer for to do list.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="Window-innerWidth-demo-code-sample-193.html">api-193.  Window.innerWidth - demo - code sample.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="random-color-example-194.html">api-194.  Random color example — event handler attribute.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="basic-DOM-manipulation-195.html">api-195.  Basic DOM manipulation.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="uses-of-DOM APIs-196.html">api-196.  We will look at a couple of more practical uses of DOM APIs.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="window-resize-example-197.html">api-197.  Getting useful information from the Window object.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="shopping-list-198.html">api-198.  A dynamic shopping list.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="shopping-2-list-199.html">api-199.  A dynamic shopping list.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="ajax-start-200.html">XMLHttpRequest-200. A basic Ajax request.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="ajax-start-201.html">Fetch-201. A 2nd basic Ajax request.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="fetch-method-202.html">Fetch-202. An example that shows some more interesting uses of Fetch.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="xmlhttprequest-203.html">XHR-203. Simple timed XHR example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="third-party APIs-204.html">APIs-204. Third-party APIs / Mapquest example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="a-simple-website-205.html">Website-205. An example of a simple website.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="google-maps-api-206.html">Google Maps-206. An example of Google Maps APIs.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="ny-times-api-207.html">NY Times API-207. NY Times API example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="youtube-apis-208.html">YouTube APIs-208. YouTube APIs example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="WebGL-demo-209.html">WebGL Demo-209. WebGL Demo example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="canvas-demo-210.html">Canvas API Demo-210. Creating and sizing our canvas demo example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="drawing-paths-2011.html">Drawing paths-211. Drawing paths Demo example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="drawing-text-2012.html">Drawing text-212. Drawing Text Demo example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="drawing-image-2013.html">Drawing image-213. Drawing images onto canvas.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-&-animations-2014.html">Loops and animations-214. Loops and animations onto canvas.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="loops-&-animations_2-2015.html">Loops and animations-215. Loops and animations onto canvas.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="animations-2016.html">Animations-216. Loop animations onto canvas.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="drawing-appli-2017.html">drawing-appli-217. A simple drawing application.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="three.js-2018.html">Three.js-218. MDN Games: Three.js demo.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="babylon.js-219.html">Babylon.js-219. MDN Games: Babylon.js demo.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="basic-cube-220.html">Three.js.js-220. Three.js basic cube example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="medium-cube-221.html">Three.js.js-221. To take a video stream from a computer web cam and project it onto the side of the cube as a texture!.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="medium_2-cube-222.html">Three.js.js-222. webgl - lights - hemisphere light.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="WebGL-demo-222.html">WebGL-222. WebGL Demo.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="storage-223.html">localStorage-223. Client-side storage.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="indexedDB-224.html">IndexedDB-224. Storing complex data — IndexedDB.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="indexedDB-225.html">IndexedDB-225. Storing complex data via IndexedDB.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="indexedDB-226.html">IndexedDB-226. A service worker example(to run offline!).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="form-227.html">FORM-227. Implementing our form HTML.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="form-structure-228.html">FORM-228. Building a form structure.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="single-line-text-fields-229.html">FORM-229. Single line text fields.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="checkboxes-radioButtons-230.html">FORM-230. Checkable items: checkboxes and radio buttons.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="toggle-buttons/switches-231.html">FORM-231. A toggle button / A toggle switches.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="buttons-232.html">FORM-232. Actual buttons.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="disabled-attribute-233.html">FORM-233. Disabled attribute.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="date-and-time-234.html">FORM-234. Date and time pickers.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="drop-down-content-235.html">FORM-235. Drop down content examples.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="other-form-features-236.html">FORM-236. Other form features.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="specific-styling-237.html">FORM-237. A specific styling example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="specific-styling-test-238.html">FORM-238. Test your skills: Styling basics.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="appearance-tester-239.html">FORM-239. appearance: controlling OS-level styling.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="appearance-ugly-controls-240.html">FORM-240. appearance: Ugly controls basic styling.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-inputs-241.html">FORM-241. Styling inputs(required or not).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-inputs-required-242.html">FORM-242. Styling inputs(required or not).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-valid-invalid-243.html">FORM-243. Indicating valid and invalid form fields.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-out-of-range-244.html">FORM-244. :out-of-range example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-enabled-disabled-245.html">FORM-245. :enabled and :disabled demo — shipping form.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-read-only-246.html">FORM-246. Read-only and read-write.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-indeterminate-247.html">FORM-247. The :indeterminate CSS pseudo-class.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-checked-default-248.html">FORM-248. The :checked, :default CSS pseudo-class.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-indeterminate2-249.html">FORM-249. The :indeterminate 2nd e.g CSS pseudo-class.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-placeholder-shown-250.html">FORM-250. The :placeholder-shown CSS pseudo-class.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-advanced-251.html">FORM-251. Advanced styling: Task 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-advanced-252.html">FORM-252. Advanced styling: Task 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-advanced-253.html">FORM-253. Advanced styling: Task 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-built-in-form-validation-254.html">FORM-254. Built-in form validation examples.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-built-in-form-validation-255.html">FORM-255. HTML's built-in validation features.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-constraint-validation-API-256.html">FORM-256. Constraint validation API.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-invalid-event-257.html">FORM-257. HTMLInputElement: invalid event.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-customized-error-message-258.html">FORM-258. Implementing a customized error message.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-detailed-custom-validation-259.html">FORM-259. Detailed custom validation.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-Event.preventDefault()-260.html">FORM-260. Event.preventDefault().</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-no-constraint-validation-API-261.html">FORM-261. An example that doesn't use the constraint validation API.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-form-validation-262.html">FORM-262. Form validation 1.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-form-validation-263.html">FORM-263. Form validation 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-form-validation-264.html">FORM-264. Form validation 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-sending-form-data-265.html">FORM-265. Sending form data:(GET method).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-sending-form-data-266.html">FORM-266. Sending form data:(POST method).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-PHP-form-submission-267.html">FORM-267. PHP form submission example.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-option-group-element-268.html">FORM-268. The Option Group element.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-custom-form-widgets-269.html">FORM-269.  How to build custom form widgets eg3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-custom-form-widgets-270.html">FORM-270.  How to build custom form widgets eg4.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-custom-form-widgets-271.html">FORM-271.  How to build custom form widgets using radio buttons.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="styling-binary-data-272.html">FORM-272.  Dealing with binary data.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-ui-controls-273.html">FORM-273. Native keyboard accessibility.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-keyboard-274.html">FORM-274. Building keyboard accessibility back in.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-good-table-275.html">FORM-275. Good table (for all users).</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-1-276.html">FORM-276. HTML accessibility 1.</a></h2>
+        
+        <hr>
+        <h2>Navigate to <a href="accessibility-2-277.html">FORM-277. HTML accessibility 2.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-3-278.html">FORM-278. HTML accessibility 3.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-4-279.html">FORM-279. HTML accessibility 4.</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-form-css-280.html">FORM-280. Form CSS example</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-table-css-281.html">FORM-281. Table CSS example</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-tabbed-info-box-282.html">FORM-282. Tabbed info box</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-form-validation-283.html">FORM-283. Form validation example</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-mouse-&-keyboard-events-284.html">FORM-284. Mouse and keyboard events example</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-CSS-accessibility-285.html">FORM-285. CSS accessibility: Task 1</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-CSS-accessibility-286.html">FORM-286. CSS accessibility: Task 2</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-JavaScript-accessibility-287.html">FORM-287. JavaScript accessibility 1</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-website-structure-288.html">FORM-288. Example website structure</a></h2>
+
+        <hr>
+        <h2>Navigate to <a href="accessibility-dynamic-content-updates-289.html">FORM-289. Dynamic content updates</a></h2>
+
+  </body>
+</html>

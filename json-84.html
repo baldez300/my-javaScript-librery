@@ -1,0 +1,28 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Creating and copying paths</title>
+        <script>
+            function draw() {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let path1 = new Path2D();
+                path1.rect(10, 10, 100,100);
+
+                let path2 = new Path2D(path1);
+                path2.moveTo(220, 60);
+                path2.arc(170, 60, 50, 0, 2 * Math.PI);
+
+                ctx.stroke(path2);
+
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="150" height="150"></canvas>
+    </body>
+</html>

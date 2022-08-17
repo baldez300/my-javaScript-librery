@@ -1,0 +1,34 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let ctx = document.getElementById('canvas').getContext('2d');
+            
+                ctx.fillRect(0, 0, 250, 250);   // Draw a rectangle with default settings
+                ctx.save();                  // Save the default state
+            
+                ctx.fillStyle = '#09F';      // Make changes to the settings
+                ctx.fillRect(15, 15, 220, 220); // Draw a rectangle with new settings
+            
+                ctx.save();                  // Save the current state
+                ctx.fillStyle = '#FFF';      // Make changes to the settings
+                ctx.globalAlpha = 0.5;
+                ctx.fillRect(30, 30, 190, 190);   // Draw a rectangle with new settings
+            
+                ctx.restore();               // Restore previous state
+                ctx.fillRect(45, 45, 160, 160);   // Draw a rectangle with restored settings
+            
+                ctx.restore();               // Restore original state
+                ctx.fillRect(60, 60, 130, 130);   // Draw a rectangle with restored settings
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"width="360" height="310"></canvas>
+    </body>
+</html>

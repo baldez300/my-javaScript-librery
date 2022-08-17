@@ -1,0 +1,28 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let ctx = document.getElementById('canvas').getContext('2d');
+
+                // draw a simple rectangle, but scale it.
+                ctx.save();
+                ctx.scale(10, 3);
+                ctx.fillRect(1, 10, 10, 10);
+                ctx.restore();
+
+                // mirror horizontally
+                ctx.scale(-1, 1);
+                ctx.font = '48px serif';
+                ctx.fillText('MDN', -135, 120);
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"width="360" height="310"></canvas>
+    </body>
+</html>

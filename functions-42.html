@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Functions: Task 2</title>
+        <style>
+        p {
+            color: purple;
+            margin: 0.5em 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+        </style>
+        <link rel="stylesheet" href="../styles.css" />
+    </head>
+
+    <body>
+
+        <section class="preview">
+
+        </section>
+
+        <canvas width="480" height="320">
+
+        </canvas>
+
+    </body>
+    <script>
+        document.querySelector('html').style.backgroundColor = 'gray';
+
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+
+        let x = 140;
+        let y = 90;
+        let width = 200;
+        let height = 130;
+        let color = 'blue';
+
+        //canvas.innerHTML = '';
+
+        // Add your code here
+
+        // ONE WAY OF DRWING THE OTHER ONE IS BELOW.
+        // function drawSquare(x, y, width, height, color) {
+        //     ctx.clearRect(0, 0, canvas.width, canvas.height);
+        //     ctx.fillStyle = color;
+        //     ctx.fillRect(x, y, width, height, color);
+        // } 
+        // drawSquare(x, y, width, height, color);
+
+        // ONE WAY OF DRWING THE OTHER ONE IS EBOVE.
+        function drawSquare(x, y, width, height, color) {
+            ctx.fillStyle = 'yellow';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height, color);
+        
+        } 
+        drawSquare(x, y, width, height, color);
+
+        // Don't edit the code below here!
+
+        const section = document.querySelector('section');
+  </script>
+
+</html>

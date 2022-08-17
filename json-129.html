@@ -1,0 +1,26 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+            let ctx = document.getElementById('canvas').getContext('2d');
+                for (let i = 0; i < 3; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        ctx.save();
+                        ctx.fillStyle = 'rgb(' + (51 * i) + ', ' + (255 - 51 * i) + ', 255)';
+                        ctx.translate(10 + j * 50, 10 + i * 50);
+                        ctx.fillRect(0, 0, 25, 25);
+                        ctx.restore();
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"width="360" height="310"></canvas>
+    </body>
+</html>

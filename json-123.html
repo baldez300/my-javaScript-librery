@@ -1,0 +1,40 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+
+                const image = new Image(60, 45); // Using optional size for image
+                image.onload = drawImageActualSize; // Draw when image has loaded
+
+                // Load an image of intrinsic size 300x227 in CSS pixels
+                image.src = 'images/rhino.jpg';
+
+                function drawImageActualSize() {
+                    // Use the intrinsic size of image in CSS pixels for the canvas element
+                    canvas.width = this.naturalWidth;
+                    canvas.height = this.naturalHeight;
+
+                    // Will draw the image as 300x227, ignoring the custom size of 60x45
+                    // given in the constructor
+                    ctx.drawImage(this, 0, 0);
+
+                    // To use the custom size we'll have to specify the scale parameters
+                    // using the element's width and height properties - lets draw one
+                    // on top in the corner:
+                    // Instead of "0, 0, after this" I added "85, 45," for the rhino to piggyback its smaller version.
+                    ctx.drawImage(this, 85, 45, this.width, this.height);
+                }
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas"></canvas>
+    </body>
+</html>

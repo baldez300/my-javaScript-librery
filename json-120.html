@@ -1,0 +1,33 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let ctx = document.getElementById('canvas').getContext('2d');
+                let img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0);
+
+                    // Color
+                    ctx.strokeStyle = 'red';
+
+                    // Drawing a line graph, using an external image as the backdrop for a small line graph.
+                    ctx.beginPath();
+                    ctx.moveTo(30, 96);
+                    ctx.lineTo(70, 66);
+                    ctx.lineTo(103, 76);
+                    ctx.lineTo(170, 15);
+                    ctx.stroke();
+                };
+                img.src = 'images/backdrop.png';
+            }
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="300" height="300"></canvas>
+    </body>
+</html>

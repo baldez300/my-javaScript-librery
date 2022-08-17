@@ -1,0 +1,55 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <style>
+            .go {
+                color: green;
+            }
+            .stop {
+                color: red;
+            }
+        </style>
+        <script>
+        function draw() {
+            // variable to store our intervalID
+            let nIntervId;
+
+            function changeColor() {
+            // check if already an interval has been set up
+                if (!nIntervId) {
+                    nIntervId = setInterval(flashText, 1000);
+                }
+            }
+
+            function flashText() {
+                const oElem = document.getElementById("my_box");
+                if (oElem.className === "go") {
+                    oElem.className = "stop";
+                } else {
+                    oElem.className = "go";
+                }
+            }
+
+            function stopTextColor() {
+                clearInterval(nIntervId);
+                // release our intervalID from the variable
+                nIntervId = null; 
+            }
+
+            document.getElementById("start").addEventListener("click", changeColor);
+            document.getElementById("stop").addEventListener("click", stopTextColor);
+        }
+        </script>
+    </head>
+    <body onload="draw();">
+        <div id="my_box">
+            <h1>Hello World is Balde the big BOSS & KING!</h1>
+        </div>
+          <button id="start">Start</button>
+          <button id="stop">Stop</button>          
+    </body>
+</html>

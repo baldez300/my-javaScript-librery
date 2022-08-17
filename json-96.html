@@ -1,0 +1,33 @@
+﻿<!-- // A skeleton template -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Rectangles</title>
+        <script>
+            function draw() {
+                let canvas = document.getElementById('canvas');
+                let ctx = canvas.getContext('2d');
+
+                // Create a radial gradient
+                // The inner circle is at x=110, y=90, with radius=30
+                // The outer circle is at x=100, y=100, with radius=70
+                var gradient = ctx.createRadialGradient(110,90,30, 100,100,70);
+
+                // Add three color stops
+                gradient.addColorStop(0, 'pink');
+                gradient.addColorStop(.9, 'aqua');
+                gradient.addColorStop(1, 'green');
+
+                // Set the fill style and draw a rectangle
+                ctx.fillStyle = gradient;
+                ctx.fillRect(20, 20, 160, 160);
+            }
+        </script>
+        </script>
+    </head>
+    <body onload="draw();">
+        <canvas id="canvas" width="200" height="200"></canvas>
+    </body>
+</html>
